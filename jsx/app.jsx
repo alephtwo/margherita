@@ -110,7 +110,7 @@ var DataRow = React.createClass({
     var efficiencyClass = "col-xs-2 form-group";
 
     return (
-      <div className="row" style={{paddingBottom: '1em'}}>
+      <div className="row">
 
         <div className={sizeClass}>
           <div className="input-group">
