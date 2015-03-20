@@ -1,3 +1,8 @@
+function calcEfficiency(size, price){
+  var radius = size / 2.0;
+  return ( price / (Math.PI * Math.pow(radius, 2)) ).toFixed(6);
+}
+
 var Margherita = React.createClass({
   render: function() {
     return (
@@ -50,19 +55,33 @@ var DataRow = React.createClass({
     return {
       size: "",
       price: "",
-      location: ""
+      location: "",
+      efficiency: "",
     }
   },
 
   changeSize: function(e) {
+
+    eff = "";
+    if(e.target.value !== "" && this.state.price !== ""){
+      eff = calcEfficiency(e.target.value, this.state.price);
+    }
+
     this.setState({
-      size: e.target.value
+      size: e.target.value,
+      efficiency: eff
     });
   },
 
   changePrice: function(e) {
+    eff = "";
+    if(this.state.size !== "" && e.target.value !== ""){
+      eff = calcEfficiency(this.state.size, e.target.value);
+    }
+
     this.setState({
-      price: e.target.value
+      price: e.target.value,
+      efficiency: eff
     });
   },
 
@@ -75,14 +94,17 @@ var DataRow = React.createClass({
   render: function() {
     return (
       <div className="row">
-        <div className="small-2 columns">
+        <div className="small-3 columns">
           <input placeholder="size" type="text" className="size" value={this.state.size} onChange={this.changeSize} />
         </div>
-        <div className="small-4 columns">
+        <div className="small-3 columns">
           <input placeholder="price" type="text" className="price" value={this.state.price} onChange={this.changePrice} />
         </div>
-        <div className="small-6 columns">
+        <div className="small-4 columns">
           <input placeholder="location" type="text" className="location" value={this.state.location} onChange={this.changeLocation} />
+        </div>
+        <div className="small-2 columns">
+          <input placeholder="$/area" type="text" className="location" value={this.state.efficiency} disabled />
         </div>
       </div>
     )
