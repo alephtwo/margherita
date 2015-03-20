@@ -1,15 +1,24 @@
-var nonNumbers = /[^0-9]/g;
+var nonNumbers = /[^0-9\.]/g;
 
 function calcEfficiency(size, price){
   var radius = size / 2.0;
-  return ( price / (Math.PI * Math.pow(radius, 2)) ).toFixed(6);
+  var calc = (price / (Math.PI * Math.pow(radius, 2)))
+  var result = calc.toString().substring(0, 9);
+
+  if (calc > Math.pow(10, 9)){
+    result = "just don't";
+  } else if (calc < Math.pow(10, -7)){
+    result = "buy it!";
+  }
+  return result;
 }
 
 function checkInput(size, price){
   return (size !== ""
           && price !== ""
           && size.toString().match(nonNumbers) == null
-          && price.toString().match(nonNumbers) == null);
+          && price.toString().match(nonNumbers) == null
+          && size > 0);
 }
 
 var Margherita = React.createClass({
@@ -19,8 +28,6 @@ var Margherita = React.createClass({
     );
   }
 });
-
-var nonNumbers = /[^0-9]/g;
 
 var App = React.createClass({
 
@@ -97,40 +104,40 @@ var DataRow = React.createClass({
 
   render: function() {
 
-    var sizeClass = "col-xs-2 col-xs-offset-1 form-group" + (this.state.size.toString().match(nonNumbers) ? " has-error" : "");
+    var sizeClass = "col-xs-2 col-xs-offset-1 form-group" + (this.state.size.toString().match(nonNumbers) || this.state.size === "0" ? " has-error" : "");
     var priceClass = "col-xs-2 form-group" + (this.state.price.toString().match(nonNumbers) ? " has-error" : "");
     var locationClass = "col-xs-3 form-group";
     var efficiencyClass = "col-xs-2 form-group";
 
     return (
-        <div className="row" style={{paddingBottom: '1em'}}>
+      <div className="row" style={{paddingBottom: '1em'}}>
 
-          <div className={sizeClass}>
-            <div className="input-group">
-              <input className="form-control" placeholder="size" type="text" value={this.state.size} onChange={this.changeSize} />
-              <div className="input-group-addon">in</div>
-            </div>
+        <div className={sizeClass}>
+          <div className="input-group">
+            <input className="form-control" placeholder="size" type="text" value={this.state.size} onChange={this.changeSize} />
+            <div className="input-group-addon">in</div>
           </div>
-
-          <div className={priceClass}>
-            <div className="input-group">
-              <div className="input-group-addon">$</div>
-              <input className="form-control has-success" placeholder="price" type="text" value={this.state.price} onChange={this.changePrice} />
-            </div>
-          </div>
-
-          <div className={locationClass}>
-            <input className="form-control" placeholder="location" type="text" value={this.state.location} onChange={this.changeLocation} />
-          </div>
-
-          <div className={efficiencyClass}>
-            <div className="input-group">
-              <input className="form-control" type="text" value={this.state.efficiency} readOnly />
-              <div className="input-group-addon">$/in<sup>2</sup></div>
-            </div>
-          </div>
-
         </div>
+
+        <div className={priceClass}>
+          <div className="input-group">
+            <div className="input-group-addon">$</div>
+            <input className="form-control has-success" placeholder="price" type="text" value={this.state.price} onChange={this.changePrice} />
+          </div>
+        </div>
+
+        <div className={locationClass}>
+          <input className="form-control" placeholder="location" type="text" value={this.state.location} onChange={this.changeLocation} />
+        </div>
+
+        <div className={efficiencyClass}>
+          <div className="input-group">
+            <input className="form-control" type="text" value={this.state.efficiency} readOnly />
+            <div className="input-group-addon">$/in<sup>2</sup></div>
+          </div>
+        </div>
+
+      </div>
     )
   }
 });
