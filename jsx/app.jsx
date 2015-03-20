@@ -53,7 +53,7 @@ var App = React.createClass({
 
     rows = []
     for (i = 0; i < this.state.rowCount; i++){
-      rows.push(<DataRow key={i}/>);
+      rows.push(<DataRow key={i} ref={'row' + i} />);
     }
 
     return (
