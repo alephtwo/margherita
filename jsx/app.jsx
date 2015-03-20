@@ -3,6 +3,14 @@ function calcEfficiency(size, price){
   return ( price / (Math.PI * Math.pow(radius, 2)) ).toFixed(6);
 }
 
+function checkInput(size, price){
+  var numbersOnly = /[^0-9]/g;
+  return (size !== ""
+          && price !== ""
+          && size.toString().match(numbersOnly) == null
+          && price.toString().match(numbersOnly) == null);
+}
+
 var Margherita = React.createClass({
   render: function() {
     return (
@@ -10,6 +18,8 @@ var Margherita = React.createClass({
     );
   }
 });
+
+var numbersOnly = /[^0-9]/g;
 
 var App = React.createClass({
 
@@ -61,9 +71,8 @@ var DataRow = React.createClass({
   },
 
   changeSize: function(e) {
-
     eff = "";
-    if(e.target.value !== "" && this.state.price !== ""){
+    if(checkInput(e.target.value, this.state.price)){
       eff = calcEfficiency(e.target.value, this.state.price);
     }
 
@@ -75,7 +84,7 @@ var DataRow = React.createClass({
 
   changePrice: function(e) {
     eff = "";
-    if(this.state.size !== "" && e.target.value !== ""){
+    if(checkInput(this.state.size, e.target.value)){
       eff = calcEfficiency(this.state.size, e.target.value);
     }
 
@@ -95,16 +104,32 @@ var DataRow = React.createClass({
     return (
       <div className="row">
         <div className="small-3 columns">
-          <input placeholder="size" type="text" className="size" value={this.state.size} onChange={this.changeSize} />
+          <input placeholder="size" type="number" value={this.state.size} onChange={this.changeSize} />
         </div>
         <div className="small-3 columns">
-          <input placeholder="price" type="text" className="price" value={this.state.price} onChange={this.changePrice} />
+          <div className="row collapse">
+            <div className="small-3 large-2 columns">
+              <span className="prefix">$</span>
+            </div>
+            <div className="small-9 large-10 columns">
+              <input placeholder="price" type="text" value={this.state.price} onChange={this.changePrice} />
+            </div>
+          </div>
         </div>
-        <div className="small-4 columns">
-          <input placeholder="location" type="text" className="location" value={this.state.location} onChange={this.changeLocation} />
+        <div className="small-3 columns">
+          <input placeholder="location" type="text" value={this.state.location} onChange={this.changeLocation} />
         </div>
-        <div className="small-2 columns">
-          <input placeholder="$/area" type="text" className="location" value={this.state.efficiency} disabled />
+        <div className="small-3 columns">
+          <div className="small-12 columns">
+            <div className="row collapse">
+              <div className="small-8 columns">
+                <input type="text" value={this.state.efficiency} disabled />
+              </div>
+              <div className="small-4 columns">
+                <span className="postfix">$/in<sup>2</sup></span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     )
