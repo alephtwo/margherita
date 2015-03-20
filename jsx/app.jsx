@@ -51,10 +51,14 @@ var App = React.createClass({
     return (
       <form className="text-center">
         {rows}
-        <ul className="button-group">
-          <li><a href="#" className="alert button tiny" onClick={this.removeRow}><i className="fa fa-minus"></i></a></li>
-          <li><a href="#" className="button tiny" onClick={this.addRow}><i className="fa fa-plus"></i></a></li>
-        </ul>
+        <div className="btn-group">
+          <button type="button" className="btn btn-danger" onClick={this.removeRow}>
+            <i className="fa fa-minus"></i>
+          </button>
+          <button type="button" className="btn btn-primary" onClick={this.addRow}>
+            <i className="fa fa-plus"></i>
+          </button>
+        </div>
       </form>
     );
   }
@@ -102,32 +106,20 @@ var DataRow = React.createClass({
 
   render: function() {
     return (
-      <div className="row">
-        <div className="small-3 columns">
-          <input placeholder="size" type="number" value={this.state.size} onChange={this.changeSize} />
-        </div>
-        <div className="small-3 columns">
-          <div className="row collapse">
-            <div className="small-3 large-2 columns">
-              <span className="prefix">$</span>
+      <div className="form-inline">
+        <div className="form-group">
+          <div className="row" style={{paddingBottom: '1em'}}>
+            <div className="col-xs-3">
+              <input className="form-control" placeholder="size" type="number" value={this.state.size} onChange={this.changeSize} />
             </div>
-            <div className="small-9 large-10 columns">
-              <input placeholder="price" type="text" value={this.state.price} onChange={this.changePrice} />
+            <div className="col-xs-3">
+              <input className="form-control" placeholder="price" type="text" value={this.state.price} onChange={this.changePrice} />
             </div>
-          </div>
-        </div>
-        <div className="small-3 columns">
-          <input placeholder="location" type="text" value={this.state.location} onChange={this.changeLocation} />
-        </div>
-        <div className="small-3 columns">
-          <div className="small-12 columns">
-            <div className="row collapse">
-              <div className="small-8 columns">
-                <input type="text" value={this.state.efficiency} disabled />
-              </div>
-              <div className="small-4 columns">
-                <span className="postfix">$/in<sup>2</sup></span>
-              </div>
+            <div className="col-xs-3">
+              <input className="form-control" placeholder="location" type="text" value={this.state.location} onChange={this.changeLocation} />
+            </div>
+            <div className="col-xs-3">
+              <input className="form-control" type="text" value={this.state.efficiency} disabled />
             </div>
           </div>
         </div>
