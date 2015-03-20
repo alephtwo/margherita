@@ -1,14 +1,15 @@
+var nonNumbers = /[^0-9]/g;
+
 function calcEfficiency(size, price){
   var radius = size / 2.0;
   return ( price / (Math.PI * Math.pow(radius, 2)) ).toFixed(6);
 }
 
 function checkInput(size, price){
-  var numbersOnly = /[^0-9]/g;
   return (size !== ""
           && price !== ""
-          && size.toString().match(numbersOnly) == null
-          && price.toString().match(numbersOnly) == null);
+          && size.toString().match(nonNumbers) == null
+          && price.toString().match(nonNumbers) == null);
 }
 
 var Margherita = React.createClass({
@@ -19,7 +20,7 @@ var Margherita = React.createClass({
   }
 });
 
-var numbersOnly = /[^0-9]/g;
+var nonNumbers = /[^0-9]/g;
 
 var App = React.createClass({
 
@@ -75,26 +76,16 @@ var DataRow = React.createClass({
   },
 
   changeSize: function(e) {
-    eff = "";
-    if(checkInput(e.target.value, this.state.price)){
-      eff = calcEfficiency(e.target.value, this.state.price);
-    }
-
     this.setState({
       size: e.target.value,
-      efficiency: eff
+      efficiency: checkInput(e.target.value, this.state.price) ? calcEfficiency(e.target.value, this.state.price) : "",
     });
   },
 
   changePrice: function(e) {
-    eff = "";
-    if(checkInput(this.state.size, e.target.value)){
-      eff = calcEfficiency(this.state.size, e.target.value);
-    }
-
     this.setState({
       price: e.target.value,
-      efficiency: eff
+      efficiency: checkInput(this.state.size, e.target.value) ? calcEfficiency(this.state.size, e.target.value) : "",
     });
   },
 
@@ -105,32 +96,41 @@ var DataRow = React.createClass({
   },
 
   render: function() {
+
+    var sizeClass = "col-xs-2 col-xs-offset-1 form-group" + (this.state.size.toString().match(nonNumbers) ? " has-error" : "");
+    var priceClass = "col-xs-2 form-group" + (this.state.price.toString().match(nonNumbers) ? " has-error" : "");
+    var locationClass = "col-xs-3 form-group";
+    var efficiencyClass = "col-xs-2 form-group";
+
     return (
-      <div className="form-horizontal">
         <div className="row" style={{paddingBottom: '1em'}}>
-          <div className="col-xs-2 col-xs-offset-1">
+
+          <div className={sizeClass}>
             <div className="input-group">
               <input className="form-control" placeholder="size" type="text" value={this.state.size} onChange={this.changeSize} />
               <div className="input-group-addon">in</div>
             </div>
           </div>
-          <div className="col-xs-2">
+
+          <div className={priceClass}>
             <div className="input-group">
               <div className="input-group-addon">$</div>
-              <input className="form-control" placeholder="price" type="text" value={this.state.price} onChange={this.changePrice} />
+              <input className="form-control has-success" placeholder="price" type="text" value={this.state.price} onChange={this.changePrice} />
             </div>
           </div>
-          <div className="col-xs-3">
+
+          <div className={locationClass}>
             <input className="form-control" placeholder="location" type="text" value={this.state.location} onChange={this.changeLocation} />
           </div>
-          <div className="col-xs-2">
+
+          <div className={efficiencyClass}>
             <div className="input-group">
-              <input className="form-control" type="text" value={this.state.efficiency} readonly />
+              <input className="form-control" type="text" value={this.state.efficiency} readOnly />
               <div className="input-group-addon">$/in<sup>2</sup></div>
             </div>
           </div>
+
         </div>
-      </div>
     )
   }
 });
