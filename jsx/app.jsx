@@ -106,20 +106,27 @@ var DataRow = React.createClass({
 
   render: function() {
     return (
-      <div className="form-inline">
-        <div className="form-group">
-          <div className="row" style={{paddingBottom: '1em'}}>
-            <div className="col-xs-3">
-              <input className="form-control" placeholder="size" type="number" value={this.state.size} onChange={this.changeSize} />
+      <div className="form-horizontal">
+        <div className="row" style={{paddingBottom: '1em'}}>
+          <div className="col-xs-2 col-xs-offset-1">
+            <div className="input-group">
+              <input className="form-control" placeholder="size" type="text" value={this.state.size} onChange={this.changeSize} />
+              <div className="input-group-addon">in</div>
             </div>
-            <div className="col-xs-3">
+          </div>
+          <div className="col-xs-2">
+            <div className="input-group">
+              <div className="input-group-addon">$</div>
               <input className="form-control" placeholder="price" type="text" value={this.state.price} onChange={this.changePrice} />
             </div>
-            <div className="col-xs-3">
-              <input className="form-control" placeholder="location" type="text" value={this.state.location} onChange={this.changeLocation} />
-            </div>
-            <div className="col-xs-3">
-              <input className="form-control" type="text" value={this.state.efficiency} disabled />
+          </div>
+          <div className="col-xs-3">
+            <input className="form-control" placeholder="location" type="text" value={this.state.location} onChange={this.changeLocation} />
+          </div>
+          <div className="col-xs-2">
+            <div className="input-group">
+              <input className="form-control" type="text" value={this.state.efficiency} readonly />
+              <div className="input-group-addon">$/in<sup>2</sup></div>
             </div>
           </div>
         </div>
