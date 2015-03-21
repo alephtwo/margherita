@@ -33,32 +33,27 @@ var App = React.createClass({
 
   getInitialState: function() {
     return {
-      rowCount: 1
+      rows: Immutable.List.of(<DataRow key="0" />)
     }
   },
 
   addRow: function() {
     this.setState({
-      rowCount: this.state.rowCount + 1
+      rows: this.state.rows.push(<DataRow key={this.state.rows.size} />)
     })
   },
 
   removeRow: function() {
     this.setState({
-      rowCount: Math.max(this.state.rowCount - 1, 1)
+      rows: this.state.rows.pop()
     })
   },
 
   render: function() {
 
-    rows = []
-    for (i = 0; i < this.state.rowCount; i++){
-      rows.push(<DataRow key={i} ref={'row' + i} />);
-    }
-
     return (
       <form className="text-center">
-        {rows}
+        {this.state.rows}
         <div className="btn-group">
           <button type="button" className="btn btn-danger" onClick={this.removeRow}>
             <i className="fa fa-minus"></i>
