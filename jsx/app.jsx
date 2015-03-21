@@ -21,6 +21,19 @@ function checkInput(size, price){
           && size > 0);
 }
 
+function evalBest(){
+  window.requestAnimationFrame(function(){
+    var absMin = _.min($.makeArray($(" .efficiency ")).filter(function(a){ return a.value !== ""}).map(function(a){ return Number(a.value) }));
+    $(" .efficiency" ).each(function(){
+      if (($(this).val() == "just buy it!" || $(this).val() == absMin) && $(this).val() != ""){
+        $(" #row-" + $(this).data("index")).addClass("has-success");
+      } else {
+        $(" #row-" + $(this).data("index")).removeClass("has-success");
+      }
+    });
+  });
+}
+
 var Margherita = React.createClass({
   render: function() {
     return (
@@ -33,24 +46,25 @@ var App = React.createClass({
 
   getInitialState: function() {
     return {
-      rows: Immutable.List.of(<DataRow key="0" />)
+      rows: Immutable.List.of(<DataRow key="0" index="0" />)
     }
   },
 
   addRow: function() {
     this.setState({
-      rows: this.state.rows.push(<DataRow key={this.state.rows.size} />)
-    })
+      rows: this.state.rows.push(<DataRow key={this.state.rows.size} index={this.state.rows.size} />)
+    });
   },
 
   removeRow: function() {
-    this.setState({
-      rows: this.state.rows.pop()
-    })
+    if(this.state.rows.size > 1){
+      this.setState({
+        rows: this.state.rows.pop()
+      });
+    }
   },
 
   render: function() {
-
     return (
       <form className="text-center">
         {this.state.rows}
@@ -105,7 +119,7 @@ var DataRow = React.createClass({
     var efficiencyClass = "col-xs-2 form-group";
 
     return (
-      <div className="row">
+      <div className="row" id={'row-' + this.props.index}>
 
         <div className={sizeClass}>
           <div className="input-group">
@@ -127,7 +141,7 @@ var DataRow = React.createClass({
 
         <div className={efficiencyClass}>
           <div className="input-group">
-            <input className="form-control" type="text" value={this.state.efficiency} readOnly />
+            <input className="efficiency form-control" type="text" value={this.state.efficiency} onChange={evalBest()} data-index={this.props.index} readOnly />
             <div className="input-group-addon">$/in<sup>2</sup></div>
           </div>
         </div>
