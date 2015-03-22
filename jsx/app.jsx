@@ -113,10 +113,10 @@ var DataRow = React.createClass({
 
   render: function() {
 
-    var sizeClass = "col-xs-2 col-xs-offset-1 form-group" + (this.state.size.toString().match(nonNumbers) || this.state.size === "0" ? " has-error" : "");
-    var priceClass = "col-xs-2 form-group" + (this.state.price.toString().match(nonNumbers) ? " has-error" : "");
-    var locationClass = "col-xs-3 form-group";
-    var efficiencyClass = "col-xs-2 form-group";
+    var sizeClass = "col-xs-12 col-sm-6 col-md-3 form-group" + (this.state.size.toString().match(nonNumbers) || this.state.size === "0" ? " has-error" : "");
+    var priceClass = "col-xs-12 col-sm-6 col-md-3 form-group" + (this.state.price.toString().match(nonNumbers) ? " has-error" : "");
+    var locationClass = "col-xs-12 col-sm-6 col-md-3 form-group";
+    var efficiencyClass = "col-xs-12 col-sm-6 col-md-3 form-group";
 
     return (
       <div className="row" id={'row-' + this.props.index}>
