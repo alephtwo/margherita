@@ -1,26 +1,8 @@
-#background {
-  position: fixed;
-  left: 0;
-  right: 0;
-  z-index: 1;
-
-  display: block;
-  background-image: url('pizza.jpg');
-  height: 105vh;
-  width: 105vw;
-
-  -webkit-filter: blur(2px);
-  -moz-filter: blur(2px);
-  -o-filter: blur(2px);
-  -ms-filter: blur(2px);
-  filter: blur(2px);
-}
-
 .content:before {
   content: "";
   position: fixed;
-  left: 0;
-  right: 0;
+  left: -2vw;
+  top: -2vh;
   z-index: -1;
   
   display: block;
