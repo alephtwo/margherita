@@ -66,17 +66,28 @@ var App = React.createClass({
 
   render: function() {
     return (
-      <form className="text-center">
-        {this.state.rows}
-        <div className="btn-group">
-          <button type="button" className="btn btn-danger" onClick={this.removeRow}>
-            <i className="fa fa-minus"></i>
-          </button>
-          <button type="button" className="btn btn-primary" onClick={this.addRow}>
-            <i className="fa fa-plus"></i>
-          </button>
+      <div className="panel panel-default">
+        <div className="panel-heading">
+          <div className="btn-group">
+            <button type="button" className="btn btn-danger" onClick={this.removeRow}>
+              <i className="fa fa-minus"></i>
+            </button>
+            <button type="button" className="btn btn-primary" onClick={this.addRow}>
+              <i className="fa fa-plus"></i>
+            </button>
+          </div>
         </div>
-      </form>
+        <div className="panel-body">
+          {this.state.rows}
+        </div>
+        <div className="panel-footer">
+          <audio controls autoPlay loop>
+            <source src="assets/willamette-mall.mp3" type="audio/mp3" />
+          </audio>
+          <br />
+          <span><em>Willamette Mall Music is <i className="fa fa-copyright"></i> Capcom 2006</em></span>
+        </div>
+      </div>
     );
   }
 });
@@ -121,6 +132,10 @@ var DataRow = React.createClass({
     return (
       <div className="row" id={'row-' + this.props.index}>
 
+        <div className={locationClass}>
+          <input className="form-control" placeholder="location" type="text" value={this.state.location} onChange={this.changeLocation} />
+        </div>
+
         <div className={sizeClass}>
           <div className="input-group">
             <input className="form-control" placeholder="size" type="text" value={this.state.size} onChange={this.changeSize} />
@@ -133,10 +148,6 @@ var DataRow = React.createClass({
             <div className="input-group-addon">$</div>
             <input className="form-control has-success" placeholder="price" type="text" value={this.state.price} onChange={this.changePrice} />
           </div>
-        </div>
-
-        <div className={locationClass}>
-          <input className="form-control" placeholder="location" type="text" value={this.state.location} onChange={this.changeLocation} />
         </div>
 
         <div className={efficiencyClass}>
