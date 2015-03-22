@@ -1,4 +1,5 @@
 var nonNumbers = /[^0-9\.]/g;
+var bestAvailable = "buy it";
 
 function calcEfficiency(size, price){
   var radius = size / 2.0;
@@ -6,9 +7,9 @@ function calcEfficiency(size, price){
   var result = calc.toString().substring(0, 9);
 
   if (calc > Math.pow(10, 9)){
-    result = "just don't";
+    result = "i can't even";
   } else if (calc < Math.pow(10, -7)){
-    result = "buy it!";
+    result = bestAvailable;
   }
   return result;
 }
@@ -23,14 +24,21 @@ function checkInput(size, price){
 
 function evalBest(){
   window.requestAnimationFrame(function(){
-    var absMin = _.min($.makeArray($(" .efficiency ")).filter(function(a){ return a.value !== ""}).map(function(a){ return Number(a.value) }));
-    $(" .efficiency" ).each(function(){
-      if (($(this).val() == "just buy it!" || $(this).val() == absMin) && $(this).val() != ""){
+
+    var effArray = $.makeArray($(" .efficiency ")).filter(function(a){ return a.value !== ""});
+    var absMin = _.min(effArray.map(function(a){ return Number(a.value) }));
+    if (_.any(effArray, function(e) { return e.value == bestAvailable })){
+      absMin = bestAvailable;
+    }
+
+    $( ".efficiency" ).each(function(){
+      if ($(this).val() == absMin && $(this).val() != ""){
         $(" #row-" + $(this).data("index")).addClass("has-success");
       } else {
         $(" #row-" + $(this).data("index")).removeClass("has-success");
       }
     });
+
   });
 }
 
