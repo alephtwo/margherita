@@ -1,4 +1,4 @@
-.content:before {
+#background {
   content: "";
   position: fixed;
   left: -2vw;
@@ -17,11 +17,6 @@
   filter: blur(5px);
 }
 
-.content {
-  position: fixed;
-  left: 0;
-  right: 0;
-  z-index: 0;
-  margin-left: 20px;
-  margin-right: 20px;
+.lobster {
+	font-family: "Lobster", Helvetica, sans-serif;
 }
