@@ -1,0 +1,30 @@
+{
+  "name": "margherita",
+  "version": "1.1.0",
+  "homepage": "https://github.com/alephtwo/margherita",
+  "authors": [
+    "Ben Christianson <thhuntertgm@gmail.com>"
+  ],
+  "description": "find cheap pizza.",
+  "main": "index.html",
+  "keywords": [
+    "pizza",
+    "calculator"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "font-awesome": "~4.4.0",
+    "immutable": "~3.7.5",
+    "jquery": "~2.1.4",
+    "react": "~0.13.3",
+    "underscore": "~1.8.3"
+  }
+}

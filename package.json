@@ -1,0 +1,30 @@
+{
+  "name": "margherita",
+  "version": "1.1.0",
+  "description": "find cheap pizza. ",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alephtwo/margherita.git"
+  },
+  "keywords": [
+    "pizza",
+    "calculator"
+  ],
+  "author": "Ben Christianson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alephtwo/margherita/issues"
+  },
+  "homepage": "https://github.com/alephtwo/margherita#readme",
+  "dependencies": {
+    "bower": "^1.5.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-react": "^3.0.1"
+  }
+}
