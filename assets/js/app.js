@@ -90,7 +90,7 @@ var App = React.createClass({displayName: "App",
         ), 
         React.createElement("div", {className: "panel-footer"}, 
           React.createElement("audio", {controls: true, autoPlay: true, loop: true}, 
-            React.createElement("source", {src: "mp3/willamette-mall.mp3", type: "audio/mp3"})
+            React.createElement("source", {src: "public/mp3/willamette-mall.mp3", type: "audio/mp3"})
           ), 
           React.createElement("br", null), 
           React.createElement("span", null, React.createElement("em", null, "Willamette Mall Music is ", React.createElement("i", {className: "fa fa-copyright"}), " Capcom 2006"))
@@ -131,11 +131,11 @@ var DataRow = React.createClass({displayName: "DataRow",
   },
 
   render: function() {
-
-    var sizeClass = "col-xs-12 col-sm-6 col-md-3 form-group" + (this.state.size.toString().match(nonNumbers) || this.state.size === "0" ? " has-error" : "");
-    var priceClass = "col-xs-12 col-sm-6 col-md-3 form-group" + (this.state.price.toString().match(nonNumbers) ? " has-error" : "");
-    var locationClass = "col-xs-12 col-sm-6 col-md-3 form-group";
-    var efficiencyClass = "col-xs-12 col-sm-6 col-md-3 form-group";
+    var baseClass = "col-xs-12 col-sm-6 col-md-3 form-group";
+    var sizeClass = baseClass + (this.state.size.toString().match(nonNumbers) || this.state.size === "0" ? " has-error" : "");
+    var priceClass = baseClass + (this.state.price.toString().match(nonNumbers) ? " has-error" : "");
+    var locationClass = baseClass;
+    var efficiencyClass = baseClass;
 
     return (
       React.createElement("div", {className: "row", id: 'row-' + this.props.index}, 

@@ -90,7 +90,7 @@ var App = React.createClass({
         </div>
         <div className="panel-footer">
           <audio controls autoPlay loop>
-            <source src="mp3/willamette-mall.mp3" type="audio/mp3" />
+            <source src="public/mp3/willamette-mall.mp3" type="audio/mp3" />
           </audio>
           <br />
           <span><em>Willamette Mall Music is <i className="fa fa-copyright"></i> Capcom 2006</em></span>
@@ -131,11 +131,11 @@ var DataRow = React.createClass({
   },
 
   render: function() {
-
-    var sizeClass = "col-xs-12 col-sm-6 col-md-3 form-group" + (this.state.size.toString().match(nonNumbers) || this.state.size === "0" ? " has-error" : "");
-    var priceClass = "col-xs-12 col-sm-6 col-md-3 form-group" + (this.state.price.toString().match(nonNumbers) ? " has-error" : "");
-    var locationClass = "col-xs-12 col-sm-6 col-md-3 form-group";
-    var efficiencyClass = "col-xs-12 col-sm-6 col-md-3 form-group";
+    var baseClass = "col-xs-12 col-sm-6 col-md-3 form-group";
+    var sizeClass = baseClass + (this.state.size.toString().match(nonNumbers) || this.state.size === "0" ? " has-error" : "");
+    var priceClass = baseClass + (this.state.price.toString().match(nonNumbers) ? " has-error" : "");
+    var locationClass = baseClass;
+    var efficiencyClass = baseClass;
 
     return (
       <div className="row" id={'row-' + this.props.index}>
