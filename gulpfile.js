@@ -1,6 +1,8 @@
-var gulp = require('gulp');
-var del = require('del');
+var gulp = require('gulp')
+var del = require('del')
 var react = require('gulp-react')
+var uglify = require('gulp-uglify')
+var concat = require('gulp-concat')
 
 gulp.task('clean', function () {
   return del('public/')
@@ -28,7 +30,9 @@ gulp.task('js', function () {
     'bower_components/immutable/dist/immutable.min.js',
     'bower_components/react/react.min.js',
     'assets/js/*.js'
-  ]).pipe(gulp.dest('public/js'))
+  ]).pipe(uglify())
+    .pipe(concat('app.js'))
+    .pipe(gulp.dest('public/js'))
 })
 
 gulp.task('fonts', function () {
