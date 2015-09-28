@@ -90,7 +90,7 @@ var App = React.createClass({
         </div>
         <div className="panel-footer">
           <audio controls autoPlay loop>
-            <source src="assets/mp3/willamette-mall.mp3" type="audio/mp3" />
+            <source src="mp3/willamette-mall.mp3" type="audio/mp3" />
           </audio>
           <br />
           <span><em>Willamette Mall Music is <i className="fa fa-copyright"></i> Capcom 2006</em></span>

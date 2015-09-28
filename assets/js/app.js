@@ -90,7 +90,7 @@ var App = React.createClass({displayName: "App",
         ), 
         React.createElement("div", {className: "panel-footer"}, 
           React.createElement("audio", {controls: true, autoPlay: true, loop: true}, 
-            React.createElement("source", {src: "assets/mp3/willamette-mall.mp3", type: "audio/mp3"})
+            React.createElement("source", {src: "mp3/willamette-mall.mp3", type: "audio/mp3"})
           ), 
           React.createElement("br", null), 
           React.createElement("span", null, React.createElement("em", null, "Willamette Mall Music is ", React.createElement("i", {className: "fa fa-copyright"}), " Capcom 2006"))

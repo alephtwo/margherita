@@ -7,4 +7,41 @@ gulp.task('react', function () {
     .pipe(gulp.dest('assets/js'))
 })
 
-gulp.task('default', ['react'])
+gulp.task('css', function () {
+  return gulp.src([
+    'assets/css/*.css',
+    'bower_components/bootstrap/dist/css/bootstrap.min.css',
+    'bower_components/font-awesome/css/font-awesome.min.css'
+  ]).pipe(gulp.dest('public/css'))
+})
+
+gulp.task('js', function () {
+  return gulp.src([
+    'bower_components/jquery/dist/jquery.min.js',
+    'bower_components/underscore/underscore-min.js',
+    'bower_components/bootstrap/dist/js/bootstrap.min.js',
+    'bower_components/immutable/dist/immutable.min.js',
+    'bower_components/react/react.min.js',
+    'assets/js/*.js'
+  ]).pipe(gulp.dest('public/js'))
+})
+
+gulp.task('fonts', function () {
+  return gulp.src([
+    'bower_components/font-awesome/fonts/*'
+  ]).pipe(gulp.dest('public/fonts'))
+})
+
+gulp.task('img', function () {
+  return gulp.src([
+    'assets/img/*'
+  ]).pipe(gulp.dest('public/img'))
+})
+
+gulp.task('mp3', function () {
+  return gulp.src([
+    'assets/mp3/*'
+  ]).pipe(gulp.dest('public/mp3'))
+})
+
+gulp.task('default', ['react', 'css', 'js', 'fonts', 'img', 'mp3'])
