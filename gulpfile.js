@@ -1,5 +1,10 @@
 var gulp = require('gulp');
+var del = require('del');
 var react = require('gulp-react')
+
+gulp.task('clean', function () {
+  return del('public/')
+})
 
 gulp.task('react', function () {
   return gulp.src('assets/jsx/app.jsx')
@@ -44,4 +49,4 @@ gulp.task('mp3', function () {
   ]).pipe(gulp.dest('public/mp3'))
 })
 
-gulp.task('default', ['react', 'css', 'js', 'fonts', 'img', 'mp3'])
+gulp.task('default', ['clean', 'react', 'css', 'js', 'fonts', 'img', 'mp3'])
