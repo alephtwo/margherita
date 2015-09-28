@@ -19,7 +19,8 @@ gulp.task('css', function () {
     'assets/css/*.css',
     'bower_components/bootstrap/dist/css/bootstrap.min.css',
     'bower_components/font-awesome/css/font-awesome.min.css'
-  ]).pipe(gulp.dest('public/css'))
+  ]).pipe(concat('app.css'))
+    .pipe(gulp.dest('public/css'))
 })
 
 gulp.task('js', function () {
