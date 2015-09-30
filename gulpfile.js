@@ -31,8 +31,8 @@ gulp.task('js', function () {
     'bower_components/immutable/dist/immutable.min.js',
     'bower_components/react/react.min.js',
     'assets/js/*.js'
-  ]).pipe(uglify())
-    .pipe(concat('app.js'))
+  ]).pipe(concat('app.js'))
+    .pipe(uglify())
     .pipe(gulp.dest('public/js'))
 })
 
