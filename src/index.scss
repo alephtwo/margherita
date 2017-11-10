@@ -1,6 +1,8 @@
 @import "node_modules/bootstrap/scss/bootstrap";
 
-#header { margin-top: $card-spacer-y; }
-#footer { margin-top: $card-spacer-y; }
+#header {
+  @extend .text-center;
+  margin-top: $card-spacer-y;
+}
 
 .lobster { font-family: "Lobster", Helvetica, sans-serif; }
