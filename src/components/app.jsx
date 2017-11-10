@@ -6,7 +6,7 @@ export default class App extends Component {
   render () {
     return (
       <div className="container">
-        <div id="header" className="lobster">
+        <div className="header lobster">
           <h1>margherita</h1>
         </div>
         <Calculator />
