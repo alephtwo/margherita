@@ -29,5 +29,6 @@ export default {
       loader: ExtractTextPlugin.extract('css-loader!sass-loader')
     }]
   },
+  resolve: { extensions: ['.js', '.jsx'] },
   plugins: [extractTextPlugin, htmlPlugin]
 }

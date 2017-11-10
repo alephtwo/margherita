@@ -1,7 +1,7 @@
 import Inferno from 'inferno'
 import { Provider } from 'inferno-redux'
 import { createStore } from 'redux'
-import App from './components/app.jsx'
+import App from './components/app'
 
 const store = createStore(() => {})
 
