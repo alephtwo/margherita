@@ -1,4 +1,8 @@
 import Inferno from 'inferno'
-import Hello from './hello.jsx'
+import Component from 'inferno-component'
 
-Inferno.render(<Hello />, document.getElementById('app'))
+export default class App extends Component {
+  render () {
+    return (<h1>Hello, World!</h1>);
+  }
+}
