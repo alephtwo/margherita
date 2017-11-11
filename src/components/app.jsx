@@ -10,6 +10,6 @@ export default class App extends React.Component {
         </div>
         <Calculator />
       </div>
-    );
+    )
   }
 }
