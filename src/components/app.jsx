@@ -1,13 +1,12 @@
-import Inferno from 'inferno'
-import Component from 'inferno-component'
+import React from 'react'
 import Calculator from './calculator'
 
-export default class App extends Component {
+export default class App extends React.Component {
   render () {
     return (
       <div className="container">
-        <div className="header lobster">
-          <h1>margherita</h1>
+        <div className="header">
+          <h1>{'margherita'}</h1>
         </div>
         <Calculator />
       </div>

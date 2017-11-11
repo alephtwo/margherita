@@ -23,7 +23,7 @@ export default {
       test: /.jsx?$/,
       loader: 'babel-loader',
       exclude: /node_modules/,
-      query: { presets: ['env'], plugins: ['inferno'] }
+      query: { presets: ['env', 'react'] }
     }, {
       test: /\.scss$/,
       loader: ExtractTextPlugin.extract('css-loader!sass-loader')

@@ -7,8 +7,8 @@
     "babel": "^6.23.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
-    "babel-plugin-inferno": "^3.3.0",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.7",
     "eslint": "^4.11.0",
     "eslint-config-standard": "^10.2.1",
@@ -24,11 +24,11 @@
   },
   "dependencies": {
     "bootstrap": "^4.0.0-beta.2",
-    "inferno": "^3.10.1",
-    "inferno-component": "^3.10.1",
-    "inferno-redux": "^3.10.1",
     "jquery": "^3.2.1",
     "popper.js": "^1.12.6",
+    "react": "^16.1.0",
+    "react-dom": "^16.1.0",
+    "react-redux": "^5.0.6",
     "redux": "^3.7.2"
   }
 }

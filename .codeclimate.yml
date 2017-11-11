@@ -1,6 +1,10 @@
 engines:
   eslint:
     enabled: true
+    config:
+      extensions:
+        - .js
+        - .jsx
   scss-lint:
     enabled: true
 

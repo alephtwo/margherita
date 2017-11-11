@@ -1,8 +1,7 @@
-import Inferno from 'inferno'
-import Component from 'inferno-component'
+import React from 'react'
 
-export default class Calculator extends Component {
+export default class Calculator extends React.Component {
   render () {
-    return null;
+    return null
   }
 }

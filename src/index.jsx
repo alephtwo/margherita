@@ -1,6 +1,8 @@
-import Inferno from 'inferno'
-import { Provider } from 'inferno-redux'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
 import { createStore } from 'redux'
+
 import App from './components/app'
 
 const store = createStore(() => {})
@@ -11,4 +13,4 @@ const app = (
   </Provider>
 )
 
-Inferno.render(app, document.getElementById('app'))
+ReactDOM.render(app, document.getElementById('app'))
