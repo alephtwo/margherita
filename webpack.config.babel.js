@@ -14,6 +14,7 @@ const htmlPlugin = new HtmlWebpackPlugin({
 
 export default {
   entry: './src/index.js',
+  devtool: 'source-map',
   output: {
     filename: 'app.js',
     path: path.resolve(__dirname, 'public', 'js')

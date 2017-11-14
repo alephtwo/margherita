@@ -1,8 +1,6 @@
 import { List } from 'immutable'
 
-const initialState = List({})
-
-const reducer = (state = initialState, action) => {
+const reducer = (state = List.of({}), action) => {
   switch (action.type) {
     case 'ADD_ROW': return addRow(state)
     case 'REMOVE_ROW': return removeAllButLast(state)

@@ -4,8 +4,9 @@ import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 
 import App from './components/app'
+import reducer from './reducers/calculators'
 
-const store = createStore(() => {})
+const store = createStore(reducer)
 
 const app = (
   <Provider store={store}>
@@ -14,3 +15,7 @@ const app = (
 )
 
 ReactDOM.render(app, document.getElementById('app'))
+
+console.log(store.getState())
+store.dispatch({ type: 'ADD_ROW' })
+console.log(store.getState())
