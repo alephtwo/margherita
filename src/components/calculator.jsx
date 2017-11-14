@@ -1,7 +1,10 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-export default class Calculator extends React.Component {
+class Calculator extends React.Component {
   render () {
-    return (<p>Hello, World!</p>);
+    return (<p>{JSON.stringify(this.props)}</p>);
   }
 }
+
+export default connect()(Calculator)

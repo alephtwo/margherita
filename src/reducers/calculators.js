@@ -1,8 +1,6 @@
-import { List, Record } from 'immutable'
+import { List } from 'immutable'
 
-const makeCalculator = Record({ price: 0, size: 0 })
-
-const reducer = (state = List.of(makeCalculator()), action) => {
+const reducer = (state = List.of({ price: 0, size: 0 }), action) => {
   switch (action.type) {
     case 'ADD_ROW': return addRow(state)
     case 'REMOVE_ROW': return removeAllButLast(state)
@@ -10,7 +8,7 @@ const reducer = (state = List.of(makeCalculator()), action) => {
   }
 }
 
-const addRow = (state) => state.push(makeCalculator())
+const addRow = (state) => state.push({ price: 0, size: 0 })
 
 const removeAllButLast = (state) => {
   if (state.size > 1) {

@@ -27,10 +27,9 @@ class App extends React.Component {
 
   generateRows () {
     const { rows } = this.props
-    return rows.map(r => <Calculator />)
+    return rows.map((row, i) => <Calculator key={i} rowId={i} data={row} />)
   }
 }
 
 const mapStateToProps = (state) => ({ rows: state })
-
 export default connect(mapStateToProps)(App)
