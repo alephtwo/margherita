@@ -1,5 +1,5 @@
 import React from 'react'
-import Calculator from './calculator'
+import Calculator from './Calculator'
 import { connect } from 'react-redux'
 
 class App extends React.Component {
