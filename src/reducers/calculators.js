@@ -11,7 +11,7 @@ const reducer = (state = List.of({}), action) => {
 const addRow = (state) => state.push({})
 
 const removeAllButLast = (state) => {
-  if (state.size() > 1) {
+  if (state.size > 1) {
     return state.pop()
   }
   return state
