@@ -15,7 +15,3 @@ const app = (
 )
 
 ReactDOM.render(app, document.getElementById('app'))
-
-console.log(store.getState())
-store.dispatch({ type: 'ADD_ROW' })
-console.log(store.getState())
