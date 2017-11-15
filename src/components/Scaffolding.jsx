@@ -2,11 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 class Scaffolding extends React.Component {
-  render () {
+  getClasses () {
     const { baseClass, classNames } = this.props
-    const classes = `${baseClass} ${classNames}`
+    const safeBaseClass = baseClass || ''
 
-    return <div className={classes}>{this.props.children}</div>
+    return classNames ? `${baseClass} ${classNames}` : safeBaseClass
+  }
+
+  render () {
+    return <div className={this.getClasses()}>{this.props.children}</div>
   }
 }
 Scaffolding.propTypes = {

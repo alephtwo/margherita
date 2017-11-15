@@ -30,7 +30,7 @@ class Calculator extends React.Component {
     }
 
     return (
-      <Row>
+      <Row classNames="text-center">
         <InlineForm>
           <Column>
             <TextInput
@@ -59,8 +59,8 @@ Calculator.propTypes = {
   dispatch: PropTypes.func.isRequired,
   rowId: PropTypes.number.isRequired,
   data: PropTypes.shape({
-    price: PropTypes.number,
-    size: PropTypes.number
+    price: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    size: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
   }).isRequired
 }
 

@@ -30,8 +30,8 @@ export default class TextInput extends React.Component {
 }
 
 TextInput.propTypes = {
-  disabled: PropTypes.boolean,
-  onChange: PropTypes.func.isRequired,
+  disabled: PropTypes.bool,
+  onChange: PropTypes.func,
   placeholder: PropTypes.string,
-  value: PropTypes.number.isRequired
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired
 }
