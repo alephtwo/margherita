@@ -1,6 +1,8 @@
 import React from 'react'
 import Calculator from './Calculator'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import { List } from 'immutable'
 
 class App extends React.Component {
   render () {
@@ -29,6 +31,11 @@ class App extends React.Component {
     const { rows } = this.props
     return rows.map((row, i) => <Calculator key={i} rowId={i} data={row} />)
   }
+}
+
+App.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  rows: PropTypes.instanceOf(List).isRequired
 }
 
 const mapStateToProps = (state) => ({ rows: state })
