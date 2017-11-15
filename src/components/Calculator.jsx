@@ -30,8 +30,8 @@ class Calculator extends React.Component {
     }
 
     return (
-      <InlineForm>
-        <Row>
+      <Row>
+        <InlineForm>
           <Column>
             <TextInput
               prefix="$"
@@ -49,8 +49,8 @@ class Calculator extends React.Component {
           <Column>
             <TextInput suffix="in²/$" value={calculate(price, size)} disabled />
           </Column>
-        </Row>
-      </InlineForm>
+        </InlineForm>
+      </Row>
     )
   }
 }

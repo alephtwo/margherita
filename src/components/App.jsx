@@ -1,8 +1,10 @@
 import React from 'react'
 import Calculator from './Calculator'
+import Card from './Card'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { List } from 'immutable'
+import { Row, Column } from './Scaffolding'
 
 class App extends React.Component {
   render () {
@@ -11,8 +13,7 @@ class App extends React.Component {
         <div className="header">
           <h1>{'margherita'}</h1>
         </div>
-        {this.generateButtons()}
-        {this.generateRows()}
+        <Card header={this.generateButtons()} body={this.generateRows()} />
       </div>
     )
   }
@@ -20,10 +21,14 @@ class App extends React.Component {
   generateButtons () {
     const { dispatch } = this.props
     return (
-      <div>
-        <a className="btn btn-primary" onClick={() => dispatch({ type: 'ADD_ROW' })}>Add</a>
-        <a className="btn btn-primary" onClick={() => dispatch({ type: 'REMOVE_ROW' })}>Delete</a>
-      </div>
+      <Row classNames="text-center">
+        <Column>
+          <div className="btn-group text-center" role="group">
+            <a className="btn btn-primary" onClick={() => dispatch({ type: 'ADD_ROW' })}>Add</a>
+            <a className="btn btn-danger" onClick={() => dispatch({ type: 'REMOVE_ROW' })}>Delete</a>
+          </div>
+        </Column>
+      </Row>
     )
   }
 
