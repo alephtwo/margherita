@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 export default class Card extends React.Component {
   static getBlock (prop, klass) {
@@ -19,4 +20,10 @@ export default class Card extends React.Component {
       </div>
     )
   }
+}
+
+Card.propTypes = {
+  header: PropTypes.node,
+  body: PropTypes.node,
+  footer: PropTypes.node
 }

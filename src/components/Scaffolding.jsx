@@ -9,6 +9,11 @@ class Scaffolding extends React.Component {
     return <div className={classes}>{this.props.children}</div>
   }
 }
+Scaffolding.propTypes = {
+  baseClass: PropTypes.string,
+  classNames: PropTypes.string,
+  children: PropTypes.node
+}
 
 export class Row extends React.Component {
   render () {
