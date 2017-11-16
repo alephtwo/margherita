@@ -13,6 +13,7 @@ class App extends React.Component {
         <div className="header">
           <h1>{'margherita'}</h1>
         </div>
+        <div className="background"></div>
         <Card header={this.generateButtons()} body={this.generateRows()} />
       </div>
     )

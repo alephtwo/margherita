@@ -22,6 +22,7 @@ export default {
       loader: 'babel-loader',
       exclude: /node_modules/,
       query: { presets: ['env', 'react'] }},
+    {test: /\.jpg/, loader: 'file-loader?mimetype=image/jpeg'},
     {test: /\.scss$/, loader: ExtractTextPlugin.extract('css-loader!sass-loader')},
     {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader?mimetype=image/svg+xml'},
     {test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader?mimetype=application/font-woff'},

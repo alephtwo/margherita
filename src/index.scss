@@ -3,9 +3,30 @@
 $fa-font-path: '~font-awesome/fonts';
 @import '~font-awesome/scss/font-awesome';
 
+.background {
+  content: '';
+  position: fixed;
+  left: -2vw;
+  top: -2vh;
+  z-index: -1;
+
+  background-image: url('./assets/pizza.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 105vw;
+  height: 105vh;
+
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px);
+  filter: blur(2px);
+}
+
 .header {
   margin-top: $card-spacer-y;
   text-align: center;
+  color: white;
 }
 
 .calculator-row { margin-bottom: $card-spacer-y; }
