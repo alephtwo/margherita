@@ -24,6 +24,7 @@ export default {
       query: { presets: ['env', 'react'] }},
     {test: /\.jpg$/, loader: 'file-loader?mimetype=image/jpeg'},
     {test: /\.mp3$/, loader: 'file-loader'},
+    {test: /\.ico$/, loader: 'file-loader?name=[name].[ext]'},
     {test: /\.scss$/, loader: ExtractTextPlugin.extract('css-loader!sass-loader')},
     {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader?mimetype=image/svg+xml'},
     {test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader?mimetype=application/font-woff'},
