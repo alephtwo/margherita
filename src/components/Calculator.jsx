@@ -9,6 +9,18 @@ const calculate = (price, diameter) => {
   return (area / price).toFixed(4)
 }
 
+const normalize = (result) => {
+  if (isNaN(result)) {
+    return '';
+  }
+
+  if (!isFinite(result)) {
+    return '∞';
+  }
+
+  return result;
+}
+
 class Calculator extends React.Component {
   announce (property, value) {
     const { dispatch, rowId } = this.props
@@ -51,7 +63,7 @@ class Calculator extends React.Component {
           <Input
             type="text"
             suffix="in²/$"
-            value={calculate(price, size)}
+            value={normalize(calculate(price, size))}
             disabled />
         </Column>
       </Row>
