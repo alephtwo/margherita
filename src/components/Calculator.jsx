@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import InlineForm from './InlineForm'
 import TextInput from './TextInput'
 import { Row, Column } from './Scaffolding'
 import PropTypes from 'prop-types'
@@ -31,25 +30,23 @@ class Calculator extends React.Component {
 
     return (
       <Row classNames="text-center">
-        <InlineForm>
-          <Column>
-            <TextInput
-              prefix="$"
-              placeholder="9.99"
-              value={price}
-              onChange={announceValue('price')} />
-          </Column>
-          <Column>
-            <TextInput
-              suffix="in."
-              placeholder="12"
-              value={size}
-              onChange={announceValue('size')}/>
-          </Column>
-          <Column>
-            <TextInput suffix="in²/$" value={calculate(price, size)} disabled />
-          </Column>
-        </InlineForm>
+        <Column>
+          <TextInput
+            prefix="$"
+            placeholder="9.99"
+            value={price}
+            onChange={announceValue('price')} />
+        </Column>
+        <Column>
+          <TextInput
+            suffix="in."
+            placeholder="12"
+            value={size}
+            onChange={announceValue('size')}/>
+        </Column>
+        <Column>
+          <TextInput suffix="in²/$" value={calculate(price, size)} disabled />
+        </Column>
       </Row>
     )
   }
