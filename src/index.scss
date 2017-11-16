@@ -4,3 +4,6 @@
   margin-top: $card-spacer-y;
   text-align: center;
 }
+
+.calculator-row { margin-bottom: $card-spacer-y; }
+.calculator-row:last-child { margin-bottom: 0; }

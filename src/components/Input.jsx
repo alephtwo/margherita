@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export default class TextInput extends React.Component {
+export default class Input extends React.Component {
   getAddon (type) {
     const addon = this.props[type]
     if (!addon) {
@@ -12,26 +12,21 @@ export default class TextInput extends React.Component {
   }
 
   render () {
-    const { disabled, onChange, placeholder, value } = this.props
     return (
       <div className="input-group">
         {this.getAddon('prefix')}
-        <input
-          type="text"
-          className="form-control"
-          placeholder={placeholder}
-          value={value}
-          disabled={disabled}
-          onChange={onChange} />
+        <input className="form-control" {...this.props} />
         {this.getAddon('suffix')}
       </div>
     )
   }
 }
 
-TextInput.propTypes = {
+Input.propTypes = {
+  type: PropTypes.string,
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
   placeholder: PropTypes.string,
-  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+  step: PropTypes.string
 }
