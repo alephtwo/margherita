@@ -13,9 +13,7 @@ const htmlPlugin = new HtmlWebpackPlugin({
 
 export default {
   entry: './src/index.js',
-  devtool: 'source-map',
   output: { filename: 'app.js' },
-  devServer: { compress: true, port: 8080 },
   module: {
     loaders: [{
       test: /.jsx?$/,
