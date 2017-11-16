@@ -24,8 +24,12 @@ class App extends React.Component {
       <Row classNames="text-center">
         <Column>
           <div className="btn-group text-center" role="group">
-            <a className="btn btn-primary" onClick={() => dispatch({ type: 'ADD_ROW' })}>Add</a>
-            <a className="btn btn-danger" onClick={() => dispatch({ type: 'REMOVE_ROW' })}>Delete</a>
+            <a className="btn btn-primary" onClick={() => dispatch({ type: 'ADD_ROW' })}>
+              <i className="fa fa-plus" />
+            </a>
+            <a className="btn btn-danger" onClick={() => dispatch({ type: 'REMOVE_ROW' })}>
+              <i className="fa fa-minus" />
+            </a>
           </div>
         </Column>
       </Row>

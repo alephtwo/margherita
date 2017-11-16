@@ -1,5 +1,8 @@
 @import 'node_modules/bootstrap/scss/bootstrap';
 
+$fa-font-path: "~font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome";
+
 .header {
   margin-top: $card-spacer-y;
   text-align: center;
