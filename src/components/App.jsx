@@ -14,7 +14,10 @@ class App extends React.Component {
           <h1>{'margherita'}</h1>
         </div>
         <div className="background"></div>
-        <Card header={this.generateButtons()} body={this.generateRows()} />
+        <Card
+          header={this.generateButtons()}
+          body={this.generateRows()}
+          footer={this.generateAudio()} />
       </div>
     )
   }
@@ -40,6 +43,20 @@ class App extends React.Component {
   generateRows () {
     const { rows } = this.props
     return rows.map((row, i) => <Calculator key={i} rowId={i} data={row} />)
+  }
+
+  generateAudio () {
+    return (
+      <div className="text-center">
+        <audio controls autoPlay loop>
+          <source src={require('../assets/willamette-mall.mp3')} type="audio/mp3" />
+        </audio>
+        <br />
+        <span>
+          <small>Willamette Mall Music is <i className="fa fa-copyright" /> Capcom 2006</small>
+        </span>
+      </div>
+    );
   }
 }
 
