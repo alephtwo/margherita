@@ -20,8 +20,16 @@ const removeAllButLast = (state) => {
 
 const updateRow = (state, { rowId, property, value }) => {
   const row = state.get(rowId)
-  const updated = Object.assign({}, row, { [property]: value })
+  const updated = Object.assign({}, row, { [property]: normalize(value) })
   return state.set(rowId, updated)
+}
+
+const normalize = (value) => {
+  if (value !== '' && +value < 0) {
+    return 0
+  }
+
+  return value
 }
 
 export default reducer
