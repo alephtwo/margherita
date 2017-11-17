@@ -3,39 +3,34 @@
 $fa-font-path: '~font-awesome/fonts';
 @import '~font-awesome/scss/font-awesome';
 
+$white: #fff;
+
 .app-name {
   font-size: 2.5rem;
   font-weight: bold;
 }
 
 .background {
-  content: '';
-  position: fixed;
-  left: -2vw;
-  top: -2vh;
-  z-index: -1;
-
   background-image: url('./assets/pizza.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  width: 105vw;
-  height: 105vh;
-
-  -webkit-filter: blur(2px);
-  -moz-filter: blur(2px);
-  -o-filter: blur(2px);
-  -ms-filter: blur(2px);
+  content: '';
   filter: blur(2px);
+  height: 105vh;
+  left: -2vw;
+  position: fixed;
+  top: -2vh;
+  width: 105vw;
+  z-index: -1;
 }
 
 .header {
+  font-family: 'Fondamento';
   margin-top: $card-spacer-y;
   text-align: center;
-  color: white;
-  font-family: 'Fondamento';
 }
 
 .calculator-row { margin-bottom: $card-spacer-y; }
 .calculator-row:last-child { margin-bottom: 0; }
 
-.white-text { color: #FFF }
+.white-text { color: $white; }
