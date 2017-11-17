@@ -25,7 +25,7 @@ class App extends React.Component {
   generateButtons () {
     const { dispatch } = this.props
 
-    const announce = (type) => () => dispatch({ type: type });
+    const announce = (type) => () => dispatch({ type: type })
 
     return (
       <Row classNames="text-center">
@@ -59,7 +59,7 @@ class App extends React.Component {
           <small>Willamette Mall Music is <i className="fa fa-copyright" /> Capcom 2006</small>
         </span>
       </div>
-    );
+    )
   }
 }
 

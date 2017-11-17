@@ -11,14 +11,14 @@ const calculate = (price, diameter) => {
 
 const normalize = (result) => {
   if (isNaN(result)) {
-    return '';
+    return ''
   }
 
   if (!isFinite(result)) {
-    return '∞';
+    return '∞'
   }
 
-  return result;
+  return result
 }
 
 class Calculator extends React.Component {

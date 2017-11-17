@@ -29,12 +29,12 @@ const normalize = (value) => {
     return ''
   }
 
-  const isNumeric =  !isNaN(value) && isFinite(value)
+  const isNumeric = !isNaN(value) && isFinite(value)
   if (!isNumeric) {
-    return 0;
+    return 0
   }
 
-  return +value > 0 ? value : 0;
+  return +value > 0 ? value : 0
 }
 
 export default reducer
