@@ -1,19 +1,10 @@
 import { List } from 'immutable'
 
 interface Action {
-  type: string;
-  rowId: number;
-  property: string;
-  value: string | number;
-}
-
-const reducer = (state = List.of({ price: '', size: '' }), action: Action) => {
-  switch (action.type) {
-    case 'ADD_ROW': return addRow(state)
-    case 'REMOVE_ROW': return removeAllButLast(state)
-    case 'UPDATE_ROW': return updateRow(state, action)
-    default: return state
-  }
+  type: string
+  rowId: number
+  property: string
+  value: string | number
 }
 
 const addRow = (state: List<object>) =>
@@ -26,10 +17,17 @@ const removeAllButLast = (state: List<object>) => {
   return state
 }
 
-const updateRow = (state: List<object>, {rowId, property, value}: Action) => {
+const updateRow = (state: List<object>, { rowId, property, value }: Action) => {
   const row = state.get(rowId)
-  const updated = { ...row, [property]: value };
+  const updated = { ...row, [property]: value }
   return state.set(rowId, updated)
 }
 
-export default reducer
+export default (state = List.of({ price: '', size: '' }), action: Action) => {
+  switch (action.type) {
+    case 'ADD_ROW': return addRow(state)
+    case 'REMOVE_ROW': return removeAllButLast(state)
+    case 'UPDATE_ROW': return updateRow(state, action)
+    default: return state
+  }
+}

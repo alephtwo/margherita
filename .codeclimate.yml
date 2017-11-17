@@ -1,13 +1,11 @@
 engines:
-  eslint:
-    enabled: true
-    config:
-      extensions:
-        - .js
-        - .jsx
   scss-lint:
     enabled: true
+  tslint:
+    enabled: true
+    config: "tslint.json"
+    channel: beta
 
 exclude_paths:
-  - 'node_modules/'
-  - 'public/'
+  - './node_modules'
+  - './public'

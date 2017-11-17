@@ -1,8 +1,8 @@
 import * as React from 'react'
 
 interface ScaffoldingProps {
-  baseClass: string;
-  classNames?: string;
+  baseClass: string
+  classNames?: string
 }
 
 class Scaffolding extends React.Component<ScaffoldingProps, {}> {
@@ -21,7 +21,7 @@ interface RowProps { classNames?: string }
 
 export class Row extends React.Component<RowProps, {}> {
   render () {
-    return <Scaffolding baseClass="row" {...this.props} />
+    return <Scaffolding baseClass='row' {...this.props} />
   }
 }
 
@@ -31,6 +31,6 @@ interface ColumnProps {
 
 export class Column extends React.Component<ColumnProps, {}> {
   render () {
-    return <Scaffolding baseClass="col" {...this.props} />
+    return <Scaffolding baseClass='col' {...this.props} />
   }
 }

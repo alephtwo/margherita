@@ -9,10 +9,10 @@ const calculate = (price: number, diameter: number) => {
 }
 
 interface CalculatorProps {
-  dispatch: any;
-  rowId: number;
-  price: number;
-  size: number;
+  dispatch: any
+  rowId: number
+  price: number
+  size: number
 }
 
 class Calculator extends React.Component<CalculatorProps, {}> {
@@ -34,31 +34,31 @@ class Calculator extends React.Component<CalculatorProps, {}> {
     }
 
     return (
-      <Row classNames="text-center calculator-row">
+      <Row classNames='text-center calculator-row'>
         <Column>
           <Input
-            type="number"
-            prefix="$"
-            placeholder="9.99"
-            step="0.01"
+            type='number'
+            prefix='$'
+            placeholder='9.99'
+            step='0.01'
             value={price}
             onChange={announceValue('price')} />
         </Column>
         <Column>
           <Input
-            type="number"
-            suffix="in."
-            placeholder="12"
+            type='number'
+            suffix='in.'
+            placeholder='12'
             value={size}
-            min="0"
+            min='0'
             onChange={announceValue('size')}/>
         </Column>
         <Column>
           <Input
-            type="text"
-            suffix="in²/$"
+            type='text'
+            suffix='in²/$'
             value={calculate(price, size)}
-            min="0"
+            min='0'
             disabled />
         </Column>
       </Row>
