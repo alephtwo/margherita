@@ -57,6 +57,7 @@ class Calculator extends React.Component {
             suffix="in."
             placeholder="12"
             value={size}
+            min="0"
             onChange={announceValue('size')}/>
         </Column>
         <Column>
@@ -64,6 +65,7 @@ class Calculator extends React.Component {
             type="text"
             suffix="in²/$"
             value={normalize(calculate(price, size))}
+            min="0"
             disabled />
         </Column>
       </Row>
