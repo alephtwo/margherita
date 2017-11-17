@@ -1,12 +1,17 @@
-import React from 'react'
+import * as React from 'react'
+import { connect } from 'react-redux'
+import { List } from 'immutable'
 import Calculator from './Calculator'
 import Card from './Card'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import { List } from 'immutable'
 import { Row, Column } from './Scaffolding'
 
-class App extends React.Component {
+interface AppProps {
+  dispatch?: any;
+  context?: any;
+  rows: any;
+}
+
+class App extends React.Component<AppProps, {}> {
   render () {
     return (
       <div className="container">
@@ -22,10 +27,10 @@ class App extends React.Component {
     )
   }
 
-  generateButtons () {
+  generateButtons () : React.ReactNode {
     const { dispatch } = this.props
 
-    const announce = (type) => () => dispatch({ type: type })
+    const announce = (type: string) => () => dispatch({ type: type })
 
     return (
       <Row classNames="text-center">
@@ -43,12 +48,13 @@ class App extends React.Component {
     )
   }
 
-  generateRows () {
+  generateRows () : React.ReactNode {
     const { rows } = this.props
-    return rows.map((row, i) => <Calculator key={i} rowId={i} data={row} />)
+    return rows.map((row: {price: number, size: number}, i: number) =>
+      <Calculator key={i} rowId={i} price={row.price} size={row.size} />)
   }
 
-  generateAudio () {
+  generateAudio () : React.ReactNode {
     return (
       <div className="text-center">
         <audio controls autoPlay loop>
@@ -63,10 +69,5 @@ class App extends React.Component {
   }
 }
 
-App.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  rows: PropTypes.instanceOf(List).isRequired
-}
-
-const mapStateToProps = (state) => ({ rows: state })
+const mapStateToProps = (state: List<object>) => ({ rows: state })
 export default connect(mapStateToProps)(App)

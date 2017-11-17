@@ -1,8 +1,13 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import * as React from 'react'
 
-export default class Card extends React.Component {
-  static getBlock (prop, klass) {
+interface CardProps {
+  header: React.ReactNode;
+  body: React.ReactNode;
+  footer: React.ReactNode;
+}
+
+export default class Card extends React.Component<CardProps, {}> {
+  static getBlock (prop: React.ReactNode, klass: string) {
     if (!prop) {
       return null
     }
@@ -20,10 +25,4 @@ export default class Card extends React.Component {
       </div>
     )
   }
-}
-
-Card.propTypes = {
-  header: PropTypes.node,
-  body: PropTypes.node,
-  footer: PropTypes.node
 }

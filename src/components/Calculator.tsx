@@ -1,28 +1,22 @@
-import React from 'react'
+import * as React from 'react'
 import { connect } from 'react-redux'
 import Input from './Input'
 import { Row, Column } from './Scaffolding'
-import PropTypes from 'prop-types'
 
-const calculate = (price, diameter) => {
+const calculate = (price: number, diameter: number) => {
   const area = Math.PI * ((diameter / 2) ** 2)
   return (area / price).toFixed(4)
 }
 
-const normalize = (result) => {
-  if (isNaN(result)) {
-    return ''
-  }
-
-  if (!isFinite(result)) {
-    return '∞'
-  }
-
-  return result
+interface CalculatorProps {
+  dispatch: any;
+  rowId: number;
+  price: number;
+  size: number;
 }
 
-class Calculator extends React.Component {
-  announce (property, value) {
+class Calculator extends React.Component<CalculatorProps, {}> {
+  announce (property: string, value: any) {
     const { dispatch, rowId } = this.props
     dispatch({
       type: 'UPDATE_ROW',
@@ -33,11 +27,10 @@ class Calculator extends React.Component {
   }
 
   render () {
-    const { data } = this.props
-    const { price, size } = data
+    const { price, size } = this.props
 
-    const announceValue = (property) => {
-      return e => this.announce(property, e.target.value)
+    const announceValue = (property: string) => {
+      return (e: any) => this.announce(property, e.target.value)
     }
 
     return (
@@ -64,22 +57,13 @@ class Calculator extends React.Component {
           <Input
             type="text"
             suffix="in²/$"
-            value={normalize(calculate(price, size))}
+            value={calculate(price, size)}
             min="0"
             disabled />
         </Column>
       </Row>
     )
   }
-}
-
-Calculator.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  rowId: PropTypes.number.isRequired,
-  data: PropTypes.shape({
-    price: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    size: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
-  }).isRequired
 }
 
 export default connect()(Calculator)

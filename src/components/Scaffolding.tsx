@@ -1,11 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import * as React from 'react'
 
-class Scaffolding extends React.Component {
+interface ScaffoldingProps {
+  baseClass: string;
+  classNames?: string;
+}
+
+class Scaffolding extends React.Component<ScaffoldingProps, {}> {
   getClasses () {
     const { baseClass, classNames } = this.props
     const safeBaseClass = baseClass || ''
-
     return classNames ? `${baseClass} ${classNames}` : safeBaseClass
   }
 
@@ -13,22 +16,21 @@ class Scaffolding extends React.Component {
     return <div className={this.getClasses()}>{this.props.children}</div>
   }
 }
-Scaffolding.propTypes = {
-  baseClass: PropTypes.string,
-  classNames: PropTypes.string,
-  children: PropTypes.node
-}
 
-export class Row extends React.Component {
+interface RowProps { classNames?: string }
+
+export class Row extends React.Component<RowProps, {}> {
   render () {
     return <Scaffolding baseClass="row" {...this.props} />
   }
 }
-Row.propTypes = { children: PropTypes.node }
 
-export class Column extends React.Component {
+interface ColumnProps {
+  classNames?: string
+}
+
+export class Column extends React.Component<ColumnProps, {}> {
   render () {
     return <Scaffolding baseClass="col" {...this.props} />
   }
 }
-Column.propTypes = { children: PropTypes.node }
