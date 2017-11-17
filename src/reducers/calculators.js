@@ -25,11 +25,16 @@ const updateRow = (state, { rowId, property, value }) => {
 }
 
 const normalize = (value) => {
-  if (value !== '' && +value < 0) {
-    return 0
+  if (value === '') {
+    return ''
   }
 
-  return value
+  const isNumeric =  !isNaN(value) && isFinite(value)
+  if (!isNumeric) {
+    return 0;
+  }
+
+  return +value > 0 ? value : 0;
 }
 
 export default reducer

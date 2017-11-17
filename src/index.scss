@@ -3,6 +3,11 @@
 $fa-font-path: '~font-awesome/fonts';
 @import '~font-awesome/scss/font-awesome';
 
+.app-name {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
 .background {
   content: '';
   position: fixed;
