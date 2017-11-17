@@ -11,7 +11,7 @@ class App extends React.Component {
     return (
       <div className="container">
         <div className="header">
-          <h1>{'margherita'}</h1>
+          <h1 className="app-name">{'margherita'}</h1>
         </div>
         <div className="background"></div>
         <Card
