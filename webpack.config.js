@@ -11,13 +11,11 @@ const htmlPlugin = new HtmlWebpackPlugin({
   template: path.resolve(__dirname, 'src', 'index.html')
 })
 
-const root = path.resolve(__dirname, 'public')
-
 module.exports = {
   entry: './src/index.tsx',
-  output: { filename: 'app.js', path: root },
+  output: { filename: 'app.js' },
   devtool: 'source-map',
-  devServer: { contentBase: root, compress: true, port: 8080 },
+  devServer: { compress: true, port: 8080 },
   module: {
     loaders: [
       {test: /.tsx?$/, loader: 'awesome-typescript-loader', exclude: /node_modules/},
