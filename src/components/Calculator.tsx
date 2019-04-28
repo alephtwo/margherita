@@ -1,37 +1,37 @@
-import * as React from 'react'
-import { connect } from 'react-redux'
-import Input from './Input'
-import { Row, Column } from './Scaffolding'
+import * as React from 'react';
+import { connect } from 'react-redux';
+import Input from './Input';
+import { Row, Column } from './Scaffolding';
 
 const calculate = (price: number, diameter: number) => {
-  const area = Math.PI * ((diameter / 2) ** 2)
-  return (area / price).toFixed(4)
-}
+  const area = Math.PI * ((diameter / 2) ** 2);
+  return (area / price).toFixed(4);
+};
 
 interface CalculatorProps {
-  dispatch: any
-  rowId: number
-  price: number
-  size: number
+  dispatch: any;
+  rowId: number;
+  price: number;
+  size: number;
 }
 
 class Calculator extends React.Component<CalculatorProps, {}> {
   announce (property: string, value: any) {
-    const { dispatch, rowId } = this.props
+    const { dispatch, rowId } = this.props;
     dispatch({
       type: 'UPDATE_ROW',
       property: property,
       value: value,
       rowId: rowId
-    })
+    });
   }
 
   render () {
-    const { price, size } = this.props
+    const { price, size } = this.props;
 
     const announceValue = (property: string) => {
-      return (e: any) => this.announce(property, e.target.value)
-    }
+      return (e: any) => this.announce(property, e.target.value);
+    };
 
     return (
       <Row classNames='text-center calculator-row'>
@@ -62,8 +62,8 @@ class Calculator extends React.Component<CalculatorProps, {}> {
             disabled />
         </Column>
       </Row>
-    )
+    );
   }
 }
 
-export default connect()(Calculator)
+export default connect()(Calculator);
