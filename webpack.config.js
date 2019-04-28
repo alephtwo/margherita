@@ -1,10 +1,10 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 
-const extractTextPlugin = new ExtractTextPlugin({
-  filename: 'app.css',
-  allChunks: true
+const css =  new MiniCssExtractPlugin({
+  filename: '[name].css',
+  chunkFilename: '[id].css',
 })
 
 const htmlPlugin = new HtmlWebpackPlugin({
@@ -19,20 +19,22 @@ module.exports = {
   devtool: 'source-map',
   devServer: { contentBase: root, compress: true, port: 8080 },
   module: {
-    loaders: [
+    rules: [
       {test: /.tsx?$/, loader: 'awesome-typescript-loader', exclude: /node_modules/},
       {test: /\.jpg$/, loader: 'file-loader?mimetype=image/jpeg'},
       {test: /\.mp3$/, loader: 'file-loader'},
       {test: /\.ico$/, loader: 'file-loader?name=[name].[ext]'},
-      {test: /\.scss$/, loader: ExtractTextPlugin.extract('css-loader!sass-loader')},
+      {
+        test: /\.scss$/,
+        use: [{loader: MiniCssExtractPlugin.loader}, 'css-loader', 'sass-loader']
+      },
       {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader?mimetype=image/svg+xml'},
       {test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader?mimetype=application/font-woff'},
       {test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader?mimetype=application/font-woff'},
       {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader?mimetype=application/octet-stream'},
       {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader'},
-      {enforce: 'pre', test: /\.js$/, loader: 'source-map-loader'}
     ]
   },
   resolve: { extensions: ['.ts', '.tsx', '.js'] },
-  plugins: [extractTextPlugin, htmlPlugin]
+  plugins: [css, htmlPlugin]
 }
