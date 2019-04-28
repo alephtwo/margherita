@@ -1,40 +1,95 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const path = require('path')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
-const css =  new MiniCssExtractPlugin({
-  filename: '[name].css',
-  chunkFilename: '[id].css',
-})
-
-const htmlPlugin = new HtmlWebpackPlugin({
-  template: path.resolve(__dirname, 'src', 'index.html')
-})
-
-const root = path.resolve(__dirname, 'public')
-
-module.exports = {
-  entry: './src/index.tsx',
-  output: { filename: 'app.js', path: root },
-  devtool: 'source-map',
-  devServer: { contentBase: root, compress: true, port: 8080 },
-  module: {
-    rules: [
-      {test: /.tsx?$/, loader: 'awesome-typescript-loader', exclude: /node_modules/},
-      {test: /\.jpg$/, loader: 'file-loader?mimetype=image/jpeg'},
-      {test: /\.mp3$/, loader: 'file-loader'},
-      {test: /\.ico$/, loader: 'file-loader?name=[name].[ext]'},
-      {
-        test: /\.scss$/,
-        use: [{loader: MiniCssExtractPlugin.loader}, 'css-loader', 'sass-loader']
-      },
-      {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader?mimetype=image/svg+xml'},
-      {test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader?mimetype=application/font-woff'},
-      {test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader?mimetype=application/font-woff'},
-      {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader?mimetype=application/octet-stream'},
-      {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader'},
+const rules = {
+  typescript: {
+    test: /.tsx?$/,
+    loader: 'awesome-typescript-loader',
+  },
+  css: {
+    test: /\.scss$/,
+    use: [
+      { loader: MiniCssExtractPlugin.loader },
+      'css-loader',
+      'sass-loader'
     ]
   },
-  resolve: { extensions: ['.ts', '.tsx', '.js'] },
-  plugins: [css, htmlPlugin]
+  jpg: {
+    test: /\.jpg$/,
+    loader: 'file-loader?mimetype=image/jpeg'
+  },
+  mp3: {
+    test: /\.mp3$/,
+    loader: 'file-loader'
+  },
+  ico: {
+    test: /\.ico$/,
+    loader: 'file-loader?name=[name].[ext]'
+  },
+  svg: {
+    test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+    loader: 'file-loader?mimetype=image/svg+xml'
+  },
+  woff: {
+    test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
+    loader: 'file-loader?mimetype=application/font-woff'
+  },
+  woff2: {
+    test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
+    loader: 'file-loader?mimetype=application/font-woff'
+  },
+  ttf: {
+    test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+    loader: 'file-loader?mimetype=application/octet-stream'
+  },
+  eot: {
+    test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+    loader: 'file-loader'
+  }
+};
+
+const plugins = {
+  css: new MiniCssExtractPlugin({
+    filename: '[name].css',
+    chunkFilename: '[id].css',
+  }),
+  html: new HtmlWebpackPlugin({
+    template: path.resolve(__dirname, 'src', 'index.html')
+  })
+};
+
+const root = path.resolve(__dirname, 'public');
+module.exports = {
+  entry: './src/index.tsx',
+  output: {
+    filename: 'app.js',
+    path: root
+  },
+  devtool: 'source-map',
+  module: {
+    rules: [
+      rules.typescript,
+      rules.css,
+      rules.jpg,
+      rules.mp3,
+      rules.ico,
+      rules.svg,
+      rules.woff,
+      rules.woff2,
+      rules.ttf,
+      rules.eot
+    ]
+  },
+  resolve: {
+    extensions: [
+      '.ts',
+      '.tsx',
+      '.js'
+    ]
+  },
+  plugins: [
+    plugins.html,
+    plugins.css
+  ]
 }

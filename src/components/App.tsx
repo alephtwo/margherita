@@ -1,14 +1,14 @@
-import * as React from 'react'
-import { connect } from 'react-redux'
-import { List } from 'immutable'
-import Calculator from './Calculator'
-import Card from './Card'
-import { Row, Column } from './Scaffolding'
+import * as React from 'react';
+import { connect } from 'react-redux';
+import { List } from 'immutable';
+import Calculator from './Calculator';
+import Card from './Card';
+import { Row, Column } from './Scaffolding';
 
 interface AppProps {
-  dispatch?: any
-  context?: any
-  rows: any
+  dispatch?: any;
+  context?: any;
+  rows: any;
 }
 
 class App extends React.Component<AppProps, {}> {
@@ -24,13 +24,13 @@ class App extends React.Component<AppProps, {}> {
           body={this.generateRows()}
           footer={this.generateAudio()} />
       </div>
-    )
+    );
   }
 
   generateButtons (): React.ReactNode {
-    const { dispatch } = this.props
+    const { dispatch } = this.props;
 
-    const announce = (type: string) => () => dispatch({ type: type })
+    const announce = (type: string) => () => dispatch({ type: type });
 
     return (
       <Row classNames='text-center'>
@@ -45,13 +45,13 @@ class App extends React.Component<AppProps, {}> {
           </div>
         </Column>
       </Row>
-    )
+    );
   }
 
   generateRows (): React.ReactNode {
-    const { rows } = this.props
+    const { rows } = this.props;
     return rows.map((row: {price: number, size: number}, i: number) =>
-      <Calculator key={i} rowId={i} price={row.price} size={row.size} />)
+      <Calculator key={i} rowId={i} price={row.price} size={row.size} />);
   }
 
   generateAudio (): React.ReactNode {
@@ -65,9 +65,9 @@ class App extends React.Component<AppProps, {}> {
           <small>Willamette Mall Music is <i className='fa fa-copyright' /> Capcom 2006</small>
         </span>
       </div>
-    )
+    );
   }
 }
 
-const mapStateToProps = (state: List<object>) => ({ rows: state })
-export default connect(mapStateToProps)(App)
+const mapStateToProps = (state: List<object>) => ({ rows: state });
+export default connect(mapStateToProps)(App);
