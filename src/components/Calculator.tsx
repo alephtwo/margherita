@@ -5,7 +5,9 @@ import { Row, Column } from './Scaffolding';
 
 const calculate = (price: number, diameter: number) => {
   const area = Math.PI * ((diameter / 2) ** 2);
-  return (area / price).toFixed(4);
+  const cost = area / price;
+
+  return isNaN(cost) ? '' : cost.toFixed(4);
 };
 
 interface CalculatorProps {
