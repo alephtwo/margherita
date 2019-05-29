@@ -20,7 +20,13 @@ export default class Input extends React.Component<InputProps, {}> {
       return null;
     }
 
-    return <div className='input-group-addon'>{addon}</div>;
+    const klass = isPrefix ? 'input-group-prepend' : 'input-group-append';
+
+    return (
+      <div className={klass}>
+        <span className='input-group-text'>{addon}</span>
+      </div>
+    );
   }
 
   render () {
