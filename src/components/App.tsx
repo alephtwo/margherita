@@ -5,6 +5,9 @@ import Calculator from './Calculator';
 import Card from './Card';
 import { Row, Column } from './Scaffolding';
 
+//@ts-ignore
+import music from '../assets/willamette-mall.mp3';
+
 interface AppProps {
   dispatch?: any;
   context?: any;
@@ -58,7 +61,7 @@ class App extends React.Component<AppProps, {}> {
     return (
       <div className='text-center'>
         <audio controls autoPlay loop>
-          <source src={require('../assets/willamette-mall.mp3')} type='audio/mp3' />
+          <source src={music} type='audio/mp3' />
         </audio>
         <br />
         <span>
