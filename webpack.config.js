@@ -5,7 +5,7 @@ const path = require('path');
 const rules = {
   typescript: {
     test: /.tsx?$/,
-    loader: 'awesome-typescript-loader',
+    loader: 'ts-loader',
   },
   css: {
     test: /\.scss$/,
@@ -17,7 +17,10 @@ const rules = {
   },
   jpg: {
     test: /\.jpg$/,
-    loader: 'file-loader?mimetype=image/jpeg'
+    loader: 'file-loader',
+    options: {
+      mimetype: 'image/jpeg'
+    }
   },
   mp3: {
     test: /\.mp3$/,
@@ -25,23 +28,38 @@ const rules = {
   },
   ico: {
     test: /\.ico$/,
-    loader: 'file-loader?name=[name].[ext]'
+    loader: 'file-loader',
+    options: {
+      name: '[name].[ext]'
+    }
   },
   svg: {
     test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-    loader: 'file-loader?mimetype=image/svg+xml'
+    loader: 'file-loader',
+    options: {
+      mimetype: 'image/svg+xml'
+    }
   },
   woff: {
     test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
-    loader: 'file-loader?mimetype=application/font-woff'
+    loader: 'file-loader',
+    options: {
+      mimetype: 'application/font-woff'
+    }
   },
   woff2: {
     test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
-    loader: 'file-loader?mimetype=application/font-woff'
+    loader: 'file-loader',
+    options: {
+      mimetype: 'application/font-woff'
+    }
   },
   ttf: {
     test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-    loader: 'file-loader?mimetype=application/octet-stream'
+    loader: 'file-loader',
+    options: {
+      mimetype: 'application/octet-stream'
+    }
   },
   eot: {
     test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
