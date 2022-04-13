@@ -1,5 +1,4 @@
-import { Container, Stack, Typography } from '@mui/material';
-import { Box } from '@mui/system';
+import { Container, Stack, Typography, Box } from '@mui/material';
 import * as React from 'react';
 import { Calculator } from '../calculator/Calculator';
 import BackgroundImage from '../static/pizza.webp';

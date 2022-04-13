@@ -2,7 +2,8 @@ import { Button, InputAdornment, Paper, Stack, TextField, Typography } from '@mu
 import * as React from 'react';
 import { useReducer } from 'react';
 import WillametteMall from '../static/willamette-mall.mp3';
-import { Add, Remove } from '@mui/icons-material';
+import Add from '@mui/icons-material/Add';
+import Remove from '@mui/icons-material/Remove';
 import { initialState, reducer } from './State';
 import { CalculatorRow, Message } from './Types';
 import { calculateSizeToPrice } from './calculateSizeToPrice';
