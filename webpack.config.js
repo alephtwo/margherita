@@ -1,113 +1,46 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
+const paths = {
+  entry: path.resolve(__dirname, 'src', 'index.tsx'),
+  html: path.resolve(__dirname, 'src', 'index.html'),
+  target: path.resolve(__dirname, 'public'),
+};
+
 const rules = {
   typescript: {
-    test: /.tsx?$/,
+    test: /\.tsx?$/,
     loader: 'ts-loader',
   },
-  css: {
-    test: /\.scss$/,
-    use: [
-      { loader: MiniCssExtractPlugin.loader },
-      'css-loader',
-      'sass-loader'
-    ]
-  },
-  jpg: {
-    test: /\.jpg$/,
+  static: {
+    test: /\.(mp3|webp|ico)$/,
     loader: 'file-loader',
     options: {
-      mimetype: 'image/jpeg'
-    }
+      name: '[name].[ext]',
+    },
   },
-  mp3: {
-    test: /\.mp3$/,
-    loader: 'file-loader'
-  },
-  ico: {
-    test: /\.ico$/,
-    loader: 'file-loader',
-    options: {
-      name: '[name].[ext]'
-    }
-  },
-  svg: {
-    test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-    loader: 'file-loader',
-    options: {
-      mimetype: 'image/svg+xml'
-    }
-  },
-  woff: {
-    test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
-    loader: 'file-loader',
-    options: {
-      mimetype: 'application/font-woff'
-    }
-  },
-  woff2: {
-    test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
-    loader: 'file-loader',
-    options: {
-      mimetype: 'application/font-woff'
-    }
-  },
-  ttf: {
-    test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-    loader: 'file-loader',
-    options: {
-      mimetype: 'application/octet-stream'
-    }
-  },
-  eot: {
-    test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-    loader: 'file-loader'
-  }
 };
 
 const plugins = {
-  css: new MiniCssExtractPlugin({
-    filename: '[name].css',
-    chunkFilename: '[id].css',
-  }),
+  clean: new CleanWebpackPlugin(),
   html: new HtmlWebpackPlugin({
-    template: path.resolve(__dirname, 'src', 'index.html')
-  })
+    template: paths.html,
+  }),
 };
 
-const root = path.resolve(__dirname, 'public');
 module.exports = {
-  entry: './src/index.tsx',
+  entry: paths.entry,
   output: {
     filename: 'app.js',
-    path: root
+    path: paths.target,
   },
   devtool: 'source-map',
-  module: {
-    rules: [
-      rules.typescript,
-      rules.css,
-      rules.jpg,
-      rules.mp3,
-      rules.ico,
-      rules.svg,
-      rules.woff,
-      rules.woff2,
-      rules.ttf,
-      rules.eot
-    ]
-  },
   resolve: {
-    extensions: [
-      '.ts',
-      '.tsx',
-      '.js'
-    ]
+    extensions: ['.ts', '.tsx', '.js'],
   },
-  plugins: [
-    plugins.html,
-    plugins.css
-  ]
-}
+  module: {
+    rules: [rules.typescript, rules.static],
+  },
+  plugins: [plugins.clean, plugins.html],
+};
