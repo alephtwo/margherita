@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { Margherita } from './margherita/Margherita';
 import { ThemeProvider } from '@emotion/react';
 import { CssBaseline, createTheme, colors } from '@mui/material';
+import './static/favicon.ico';
 
 const theme = createTheme({
   typography: {
