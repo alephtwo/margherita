@@ -1,6 +1,6 @@
 import { MaybeNumber, Message, State } from './Types';
 import * as uuid from 'uuid';
-import produce from 'immer';
+import { produce } from 'immer';
 
 export const initialState: State = {
   rows: [{ id: uuid.v4(), price: '', size: '' }],
