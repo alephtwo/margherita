@@ -1,7 +1,7 @@
-import { Container, Stack, Typography, Box } from '@mui/material';
-import * as React from 'react';
-import { Calculator } from '../calculator/Calculator';
-import BackgroundImage from '../static/pizza.webp';
+import { Container, Stack, Typography, Box } from "@mui/material";
+import * as React from "react";
+import { Calculator } from "../calculator/Calculator";
+import BackgroundImage from "../static/pizza.webp";
 
 export function Margherita() {
   return (
@@ -18,12 +18,12 @@ export function Margherita() {
 
 const styles = {
   bodyProxy: {
-    height: '100vh',
-    display: 'flex',
-    alignItems: 'flex-start',
+    height: "100vh",
+    display: "flex",
+    alignItems: "flex-start",
     backgroundImage: `url(${BackgroundImage})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
   },
   container: {
     marginTop: 1,

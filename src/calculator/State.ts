@@ -1,21 +1,21 @@
-import { MaybeNumber, Message, State } from './Types';
-import * as uuid from 'uuid';
-import { produce } from 'immer';
+import { MaybeNumber, Message, State } from "./Types";
+import * as uuid from "uuid";
+import { produce } from "immer";
 
 export const initialState: State = {
-  rows: [{ id: uuid.v4(), price: '', size: '' }],
+  rows: [{ id: uuid.v4(), price: "", size: "" }],
 };
 
 export function reducer(state: State, message: Message) {
-  console.debug('message', message);
+  console.debug("message", message);
   switch (message.action) {
-    case 'add-row':
+    case "add-row":
       return addRow(state);
-    case 'remove-row':
+    case "remove-row":
       return removeRow(state);
-    case 'set-price':
+    case "set-price":
       return setPrice(state, message.id, message.value);
-    case 'set-size':
+    case "set-size":
       return setSize(state, message.id, message.value);
     default:
       return state;
@@ -24,7 +24,7 @@ export function reducer(state: State, message: Message) {
 
 function addRow(state: State): State {
   return produce(state, (next) => {
-    next.rows.push({ id: uuid.v4(), price: '', size: '' });
+    next.rows.push({ id: uuid.v4(), price: "", size: "" });
   });
 }
 
@@ -60,10 +60,10 @@ function setSize(state: State, id: string, size: string): State {
 
 function sanitizeInput(input: string): MaybeNumber {
   // Ensure we're only looking at numbers, and at most six of them.
-  const onlyDigits = input.replace(/[^\d]/, '').substring(0, 6);
+  const onlyDigits = input.replace(/[^\d]/, "").substring(0, 6);
   const attempt = parseInt(onlyDigits);
   if (isNaN(attempt)) {
-    return '';
+    return "";
   }
   return attempt;
 }

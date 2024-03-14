@@ -1,19 +1,19 @@
-import { Button, InputAdornment, Paper, Stack, TextField, Typography } from '@mui/material';
-import * as React from 'react';
-import { useReducer } from 'react';
-import WillametteMall from '../static/willamette-mall.mp3';
-import Add from '@mui/icons-material/Add';
-import Remove from '@mui/icons-material/Remove';
-import { initialState, reducer } from './State';
-import { CalculatorRow, Message } from './Types';
-import { calculateSizeToPrice } from './calculateSizeToPrice';
+import { Button, InputAdornment, Paper, Stack, TextField, Typography } from "@mui/material";
+import * as React from "react";
+import { useReducer } from "react";
+import WillametteMall from "../static/willamette-mall.mp3";
+import Add from "@mui/icons-material/Add";
+import Remove from "@mui/icons-material/Remove";
+import { initialState, reducer } from "./State";
+import { CalculatorRow, Message } from "./Types";
+import { calculateSizeToPrice } from "./calculateSizeToPrice";
 
 export function Calculator() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
-    <Stack spacing={1} sx={{ width: '100%' }}>
-      <Controls add={() => dispatch({ action: 'add-row' })} remove={() => dispatch({ action: 'remove-row' })} />
+    <Stack spacing={1} sx={{ width: "100%" }}>
+      <Controls add={() => dispatch({ action: "add-row" })} remove={() => dispatch({ action: "remove-row" })} />
       <Rows rows={state.rows} dispatch={dispatch} />
       <Music />
     </Stack>
@@ -75,7 +75,7 @@ function Row(props: RowProps) {
         InputProps={{
           startAdornment: <InputAdornment position="start">$</InputAdornment>,
         }}
-        onChange={(e) => dispatch({ action: 'set-price', id: row.id, value: e.target.value })}
+        onChange={(e) => dispatch({ action: "set-price", id: row.id, value: e.target.value })}
       />
       <TextField
         type="tel"
@@ -86,7 +86,7 @@ function Row(props: RowProps) {
         InputProps={{
           endAdornment: <InputAdornment position="end">in</InputAdornment>,
         }}
-        onChange={(e) => dispatch({ action: 'set-size', id: row.id, value: e.target.value })}
+        onChange={(e) => dispatch({ action: "set-size", id: row.id, value: e.target.value })}
       />
       <TextField
         type="tel"
