@@ -1,6 +1,9 @@
 import { MaybeNumber } from "./Types";
 
-export function calculateSizeToPrice(price: MaybeNumber, size: MaybeNumber): MaybeNumber {
+export function calculateSizeToPrice(
+  price: MaybeNumber,
+  size: MaybeNumber,
+): MaybeNumber {
   if (price === "" || size === "") {
     return "";
   }

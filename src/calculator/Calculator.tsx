@@ -1,4 +1,11 @@
-import { Button, InputAdornment, Paper, Stack, TextField, Typography } from "@mui/material";
+import {
+  Button,
+  InputAdornment,
+  Paper,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 import * as React from "react";
 import { useReducer } from "react";
 import WillametteMall from "../static/willamette-mall.mp3";
@@ -13,7 +20,10 @@ export function Calculator() {
 
   return (
     <Stack spacing={1} sx={{ width: "100%" }}>
-      <Controls add={() => dispatch({ action: "add-row" })} remove={() => dispatch({ action: "remove-row" })} />
+      <Controls
+        add={() => dispatch({ action: "add-row" })}
+        remove={() => dispatch({ action: "remove-row" })}
+      />
       <Rows rows={state.rows} dispatch={dispatch} />
       <Music />
     </Stack>
@@ -32,7 +42,12 @@ function Controls(props: ControlsProps) {
         <Button variant="contained" size="large" onClick={props.add}>
           <Add />
         </Button>
-        <Button variant="contained" size="large" color="error" onClick={props.remove}>
+        <Button
+          variant="contained"
+          size="large"
+          color="error"
+          onClick={props.remove}
+        >
           <Remove />
         </Button>
       </Stack>
@@ -75,7 +90,9 @@ function Row(props: RowProps) {
         InputProps={{
           startAdornment: <InputAdornment position="start">$</InputAdornment>,
         }}
-        onChange={(e) => dispatch({ action: "set-price", id: row.id, value: e.target.value })}
+        onChange={(e) =>
+          dispatch({ action: "set-price", id: row.id, value: e.target.value })
+        }
       />
       <TextField
         type="tel"
@@ -86,7 +103,9 @@ function Row(props: RowProps) {
         InputProps={{
           endAdornment: <InputAdornment position="end">in</InputAdornment>,
         }}
-        onChange={(e) => dispatch({ action: "set-size", id: row.id, value: e.target.value })}
+        onChange={(e) =>
+          dispatch({ action: "set-size", id: row.id, value: e.target.value })
+        }
       />
       <TextField
         type="tel"
@@ -110,7 +129,9 @@ function Music() {
         <audio controls autoPlay loop>
           <source src={WillametteMall} type="audio/mp3" />
         </audio>
-        <Typography variant="caption">Willamette Mall Music is &copy; Capcom 2006</Typography>
+        <Typography variant="caption">
+          Willamette Mall Music is &copy; Capcom 2006
+        </Typography>
       </Stack>
     </Paper>
   );

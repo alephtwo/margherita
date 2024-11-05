@@ -8,7 +8,10 @@ export default tseslint.config(
   },
   {
     files: ["**/*.ts", "**/*.tsx"],
-    extends: [eslint.configs.recommended, ...tseslint.configs.recommendedTypeChecked],
+    extends: [
+      eslint.configs.recommended,
+      ...tseslint.configs.recommendedTypeChecked,
+    ],
     languageOptions: {
       parserOptions: {
         project: true,
