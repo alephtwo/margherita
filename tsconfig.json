@@ -5,13 +5,12 @@
     "lib": ["dom", "es2023"],
     "target": "es2022",
     "sourceMap": true,
+    "skipLibCheck": true,
     "noEmit": true,
-    "jsx": "react",
     "module": "es2022",
     "moduleResolution": "bundler",
+    "jsx": "react",
     "resolveJsonModule": true,
-    "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true
+    "strict": true
   }
 }
