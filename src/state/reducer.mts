@@ -1,17 +1,14 @@
-import { MaybeNumber, Message, State } from "./Types";
-import * as uuid from "uuid";
 import { produce } from "immer";
-
-export const initialState: State = {
-  rows: [{ id: uuid.v4(), price: "", size: "" }],
-};
+import { State } from "./State.mts";
+import { Message } from "./Message.mts";
+import { UserEnteredNumber } from "../@types/UserEnteredNumber.mts";
 
 export function reducer(state: State, message: Message) {
   switch (message.action) {
     case "add-row":
       return addRow(state);
     case "remove-row":
-      return removeRow(state);
+      return removeRow(state, message.id);
     case "set-price":
       return setPrice(state, message.id, message.value);
     case "set-size":
@@ -23,17 +20,17 @@ export function reducer(state: State, message: Message) {
 
 function addRow(state: State): State {
   return produce(state, (next) => {
-    next.rows.push({ id: uuid.v4(), price: "", size: "" });
+    next.rows.push({ id: crypto.randomUUID(), price: "", size: "" });
   });
 }
 
-function removeRow(state: State): State {
+function removeRow(state: State, id: string): State {
   // Prevent users from removing the first row
   if (state.rows.length === 1) {
     return state;
   }
   return produce(state, (next) => {
-    next.rows.pop();
+    next.rows = next.rows.filter((r) => r.id !== id);
   });
 }
 
@@ -57,7 +54,7 @@ function setSize(state: State, id: string, size: string): State {
   });
 }
 
-function sanitizeInput(input: string): MaybeNumber {
+function sanitizeInput(input: string): UserEnteredNumber {
   // Ensure we're only looking at numbers, and at most six of them.
   const onlyDigits = input.replace(/[^\d]/, "").substring(0, 6);
   const attempt = parseInt(onlyDigits);

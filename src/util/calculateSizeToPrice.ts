@@ -1,9 +1,9 @@
-import { MaybeNumber } from "./Types";
+import { UserEnteredNumber } from "../@types/UserEnteredNumber.mts";
 
 export function calculateSizeToPrice(
-  price: MaybeNumber,
-  size: MaybeNumber,
-): MaybeNumber {
+  price: UserEnteredNumber,
+  size: UserEnteredNumber,
+): UserEnteredNumber {
   if (price === "" || size === "") {
     return "";
   }

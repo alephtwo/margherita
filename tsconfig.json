@@ -11,6 +11,7 @@
     "moduleResolution": "bundler",
     "jsx": "react",
     "resolveJsonModule": true,
-    "strict": true
+    "strict": true,
+    "allowImportingTsExtensions": true
   }
 }
