@@ -18,39 +18,41 @@ export function Margherita() {
           <span className="text-7xl font-lobster text-white text-shadow-lg/80">
             margherita
           </span>
-          <Paper>
-            <div className="flex flex-col gap-2 w-full">
-              <div className="flex flex-col gap-2">
-                {state.rows.map((row) => (
-                  <CalculatorRow
-                    row={row}
-                    key={row.id}
-                    dispatch={dispatch}
-                    disableDelete={state.rows.length === 1}
-                    onDelete={() =>
-                      dispatch({ action: "remove-row", id: row.id })
-                    }
-                  />
-                ))}
-                <div>
-                  <button
-                    className="btn btn-primary w-full"
-                    onClick={() => dispatch({ action: "add-row" })}
-                  >
-                    <IconRowInsertBottom /> Add Row
-                  </button>
+          <div className="w-xl">
+            <Paper>
+              <div className="flex flex-col gap-2 w-full">
+                <div className="flex flex-col gap-2">
+                  {state.rows.map((row) => (
+                    <CalculatorRow
+                      row={row}
+                      key={row.id}
+                      dispatch={dispatch}
+                      disableDelete={state.rows.length === 1}
+                      onDelete={() =>
+                        dispatch({ action: "remove-row", id: row.id })
+                      }
+                    />
+                  ))}
+                  <div>
+                    <button
+                      className="btn btn-success w-full"
+                      onClick={() => dispatch({ action: "add-row" })}
+                    >
+                      <IconRowInsertBottom /> Add Row
+                    </button>
+                  </div>
+                </div>
+                <div className="flex flex-col content-center items-center gap-2">
+                  <audio controls autoPlay loop>
+                    <source src={WillametteMall} type="audio/mp3" />
+                  </audio>
+                  <span className="caption-bottom text-xs">
+                    Willamette Mall Music is &copy; Capcom 2006
+                  </span>
                 </div>
               </div>
-              <div className="flex flex-col content-center items-center gap-2">
-                <audio controls autoPlay loop>
-                  <source src={WillametteMall} type="audio/mp3" />
-                </audio>
-                <span className="caption-bottom text-xs">
-                  Willamette Mall Music is &copy; Capcom 2006
-                </span>
-              </div>
-            </div>
-          </Paper>
+            </Paper>
+          </div>
         </div>
       </div>
     </div>

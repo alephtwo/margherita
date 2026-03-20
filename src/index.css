@@ -4,6 +4,13 @@
 @plugin "daisyui" {
   themes: light --default;
 }
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+
+  --color-success: #5cb85c;
+  --color-error: #d85454;
+}
 
 @theme {
   --font-sans: "Robot", sans-serif;

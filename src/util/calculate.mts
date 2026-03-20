@@ -1,6 +1,6 @@
 import { UserEnteredNumber } from "../@types/UserEnteredNumber.mts";
 
-export function calculateSizeToPrice(
+export function calculate(
   price: UserEnteredNumber,
   size: UserEnteredNumber,
 ): UserEnteredNumber {
@@ -9,5 +9,5 @@ export function calculateSizeToPrice(
   }
 
   const area = Math.PI * (size / 2) ** 2;
-  return area / price;
+  return price / area;
 }
