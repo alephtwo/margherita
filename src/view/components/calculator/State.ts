@@ -7,7 +7,6 @@ export const initialState: State = {
 };
 
 export function reducer(state: State, message: Message) {
-  console.debug("message", message);
   switch (message.action) {
     case "add-row":
       return addRow(state);
