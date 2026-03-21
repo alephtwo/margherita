@@ -1,9 +1,9 @@
 import { defineConfig } from "vitest/config";
 import tailwindcss from "@tailwindcss/vite";
-import react from "@vitejs/plugin-react";
+import { svelte } from "@sveltejs/vite-plugin-svelte";
 
 export default defineConfig({
-  plugins: [tailwindcss(), react()],
+  plugins: [tailwindcss(), svelte()],
   base: "/margherita",
   test: {},
 });

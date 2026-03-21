@@ -9,7 +9,6 @@
     "noEmit": true,
     "module": "es2022",
     "moduleResolution": "bundler",
-    "jsx": "react",
     "resolveJsonModule": true,
     "strict": true,
     "allowImportingTsExtensions": true
