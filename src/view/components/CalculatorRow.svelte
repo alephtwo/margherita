@@ -32,7 +32,7 @@
   }
 </script>
 
-<div class="flex gap-2 w-full">
+<div class="flex w-full gap-2">
   <label class="input flex-1 bg-slate-50/75">
     <IconCurrencyDollar />
     <input

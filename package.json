@@ -12,7 +12,7 @@
     "build": "tsc && vite build",
     "prettier": "prettier --check .",
     "format": "prettier --write .",
-    "lint": "pnpm lint:ts && pnpm prettier && pnpm lint:md",
+    "lint": "prettier --check . && pnpm lint:ts && pnpm prettier && pnpm lint:md",
     "lint:ts": "eslint .",
     "lint:md": "markdownlint-cli2 ."
   },
@@ -28,6 +28,8 @@
     "markdownlint": "0.40.0",
     "markdownlint-cli2": "0.21.0",
     "prettier": "3.8.1",
+    "prettier-plugin-svelte": "3.4.1",
+    "prettier-plugin-tailwindcss": "0.7.2",
     "tailwindcss": "4.2.2",
     "typescript": "5.9.3",
     "typescript-eslint": "8.57.1",
