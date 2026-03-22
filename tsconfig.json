@@ -1,5 +1,5 @@
 {
-  "include": ["src"],
+  "include": ["src", "vite.config.mts"],
   "compilerOptions": {
     "types": ["vite/client"],
     "lib": ["dom", "es2023"],
@@ -9,7 +9,6 @@
     "noEmit": true,
     "module": "es2022",
     "moduleResolution": "bundler",
-    "jsx": "react",
     "resolveJsonModule": true,
     "strict": true,
     "allowImportingTsExtensions": true

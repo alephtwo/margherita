@@ -5,3 +5,7 @@ export interface RowDetails {
   price: UserEnteredNumber;
   size: UserEnteredNumber;
 }
+
+export function create(): RowDetails {
+  return { id: crypto.randomUUID(), price: "", size: "" };
+}
