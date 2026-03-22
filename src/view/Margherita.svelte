@@ -4,6 +4,7 @@
   import CalculatorRow from "./components/CalculatorRow.svelte";
   import WillametteMall from "/willamette-mall.mp3?url";
   import { type RowDetails, create as newRow } from "../@types/RowDetails.mts";
+  import { type UserEnteredNumber } from "../@types/UserEnteredNumber.mts";
 
   let rows: RowDetails[] = $state([newRow()]);
   let disableDelete = $derived(rows.length === 1);
@@ -24,21 +25,18 @@
         <Paper>
           <div class="flex w-full flex-col gap-2">
             <div class="flex flex-col gap-2">
-              {#each rows as row}
+              {#each rows as row (row.id)}
                 <CalculatorRow
                   {row}
                   {disableDelete}
-                  setPrice={(n) => {
-                    const index = findRowIndex(row);
-                    rows[index].price = n;
+                  setPrice={(n: UserEnteredNumber) => {
+                    rows[findRowIndex(row)].price = n;
                   }}
-                  setSize={(n) => {
-                    const index = findRowIndex(row);
-                    rows[index].size = n;
+                  setSize={(n: UserEnteredNumber) => {
+                    rows[findRowIndex(row)].size = n;
                   }}
                   onDelete={() => {
-                    const index = findRowIndex(row);
-                    rows.splice(index, 1);
+                    rows.splice(findRowIndex(row), 1);
                   }}
                 />
               {/each}

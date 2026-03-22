@@ -1,19 +1,33 @@
 import { defineConfig, globalIgnores } from "eslint/config";
-import eslint from "@eslint/js";
-import tseslint from "typescript-eslint";
+import js from "@eslint/js";
+import ts from "typescript-eslint";
+import svelte from "eslint-plugin-svelte";
 
 export default defineConfig(
-  eslint.configs.recommended,
+  js.configs.recommended,
   globalIgnores(["dist/**", "coverage/**", "reports/**"]),
   {
-    files: ["**/*.ts", "**/*.tsx"],
-    extends: [
-      eslint.configs.recommended,
-      ...tseslint.configs.recommendedTypeChecked,
-    ],
+    files: ["**/*.mts"],
+    extends: [js.configs.recommended, ...ts.configs.recommendedTypeChecked],
     languageOptions: {
       parserOptions: {
         project: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+  },
+  {
+    files: ["**/*.svelte"],
+    extends: [
+      js.configs.recommended,
+      ...ts.configs.recommendedTypeChecked,
+      ...svelte.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        extraFileExtensions: [".svelte"],
+        parser: ts.parser,
         tsconfigRootDir: import.meta.dirname,
       },
     },
