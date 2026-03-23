@@ -5,9 +5,27 @@
   import WillametteMall from "/willamette-mall.mp3?url";
   import { type RowDetails, create as newRow } from "../@types/RowDetails.mts";
   import { type UserEnteredNumber } from "../@types/UserEnteredNumber.mts";
+  import { calculate } from "../util/calculate.mts";
+  import { SvelteMap } from "svelte/reactivity";
 
   let rows: RowDetails[] = $state([newRow()]);
   let disableDelete = $derived(rows.length === 1);
+
+  let efficiencies = $derived(
+    rows.map(
+      (row) =>
+        [row.id, calculate(row.price, row.size)] as [string, UserEnteredNumber],
+    ),
+  );
+
+  let medals: Map<string, 1 | 2 | 3> = $derived.by(() => {
+    const sorted = efficiencies
+      .filter(([, v]) => v !== "")
+      .sort(([, a], [, b]) => (a as number) - (b as number));
+    const map = new SvelteMap<string, 1 | 2 | 3>();
+    sorted.slice(0, 3).forEach(([id], i) => map.set(id, (i + 1) as 1 | 2 | 3));
+    return map;
+  });
 
   function findRowIndex(row: RowDetails) {
     return rows.findIndex((r) => r.id === row.id);
@@ -27,10 +45,12 @@
         <Paper>
           <div class="flex w-full flex-col gap-2">
             <div class="flex flex-col gap-2">
-              {#each rows as row (row.id)}
+              {#each rows as row, i (row.id)}
                 <CalculatorRow
                   {row}
                   {disableDelete}
+                  costEfficiency={efficiencies[i][1]}
+                  medal={medals.get(row.id)}
                   setPrice={(n: UserEnteredNumber) => {
                     rows[findRowIndex(row)].price = n;
                   }}

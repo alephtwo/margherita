@@ -7,19 +7,21 @@
   } from "@tabler/icons-svelte";
   import { formatCurrency } from "../../util/currency.mts";
   import { type RowDetails } from "../../@types/RowDetails.mts";
-  import { calculate } from "../../util/calculate.mts";
   import { type UserEnteredNumber } from "../../@types/UserEnteredNumber.mts";
 
   interface CalculatorRowProps {
     row: RowDetails;
     disableDelete: boolean;
+    costEfficiency: UserEnteredNumber;
+    medal?: 1 | 2 | 3;
     setSize: (n: UserEnteredNumber) => void;
     setPrice: (n: UserEnteredNumber) => void;
     onDelete: () => void;
   }
 
   let props: CalculatorRowProps = $props();
-  let costEfficiency = $derived(calculate(props.row.price, props.row.size));
+
+  const MEDALS = { 1: "🥇", 2: "🥈", 3: "🥉" } as const;
 
   function sanitizeInput(input: string): UserEnteredNumber {
     // Ensure we're only looking at numbers, and at most six of them.
@@ -53,11 +55,17 @@
     <span>in</span>
   </label>
   <label class="input flex-1 bg-slate-50/75">
-    <IconCalculator />
+    {#if props.medal !== undefined}
+      <span>{MEDALS[props.medal]}</span>
+    {:else}
+      <IconCalculator />
+    {/if}
     <input
       type="text"
       readOnly
-      value={costEfficiency === "" ? "—" : formatCurrency(costEfficiency)}
+      value={props.costEfficiency === ""
+        ? "—"
+        : formatCurrency(props.costEfficiency)}
     />
     <span>/in²</span>
   </label>
