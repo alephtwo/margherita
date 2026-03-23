@@ -14,8 +14,10 @@
   }
 </script>
 
-<div class="flex h-screen bg-[url(/pizza.webp)] bg-cover bg-no-repeat">
-  <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+<div
+  class="flex min-h-screen bg-[url(/pizza.webp)] bg-cover bg-fixed bg-no-repeat"
+>
+  <div class="fixed inset-0 bg-black/50 backdrop-blur-xs"></div>
   <div class="z-10 container mx-auto my-4">
     <div class="flex flex-col items-center gap-5">
       <span class="font-lobster text-7xl text-white text-shadow-lg/80">
