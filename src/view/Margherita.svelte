@@ -23,7 +23,7 @@
       <span class="font-lobster text-7xl text-white text-shadow-lg/80">
         margherita
       </span>
-      <div class="w-xl">
+      <div class="w-md sm:w-xl">
         <Paper>
           <div class="flex w-full flex-col gap-2">
             <div class="flex flex-col gap-2">
