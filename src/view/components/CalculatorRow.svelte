@@ -24,13 +24,21 @@
   const MEDALS = { 1: "🥇", 2: "🥈", 3: "🥉" } as const;
 
   function sanitizeInput(input: string): UserEnteredNumber {
-    // Ensure we're only looking at numbers, and at most six of them.
-    const onlyDigits = input.replace(/[^\d]/, "").substring(0, 6);
+    const onlyDigits = input.replace(/[^\d]/g, "").substring(0, 6);
     const attempt = parseInt(onlyDigits);
     if (isNaN(attempt)) {
       return "";
     }
     return attempt;
+  }
+
+  function handleInput(
+    e: Event & { currentTarget: HTMLInputElement },
+    setter: (n: UserEnteredNumber) => void,
+  ) {
+    const sanitized = sanitizeInput(e.currentTarget.value);
+    setter(sanitized);
+    e.currentTarget.value = sanitized === "" ? "" : String(sanitized);
   }
 </script>
 
@@ -38,18 +46,20 @@
   <label class="input flex-1 bg-slate-50/75">
     <IconCurrencyDollar />
     <input
-      type="tel"
+      type="text"
+      inputmode="decimal"
       autoComplete="off"
-      oninput={(e) => props.setPrice(sanitizeInput(e.currentTarget.value))}
+      oninput={(e) => handleInput(e, props.setPrice)}
       value={props.row.price}
     />
   </label>
   <label class="input flex-1 bg-slate-50/75">
     <IconRulerMeasure2 />
     <input
-      type="tel"
+      type="text"
+      inputmode="decimal"
       autoComplete="off"
-      oninput={(e) => props.setSize(sanitizeInput(e.currentTarget.value))}
+      oninput={(e) => handleInput(e, props.setSize)}
       value={props.row.size}
     />
     <span>in</span>
