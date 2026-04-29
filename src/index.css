@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 
-@plugin "daisyui" {
+@plugin "daisyui/index.js" {
   themes: light --default;
 }
-@plugin "daisyui/theme" {
+@plugin "daisyui/theme/index.js" {
   name: "light";
   default: true;
 
