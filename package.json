@@ -21,22 +21,22 @@
     "@stryker-mutator/vitest-runner": "9.6.1",
     "@sveltejs/vite-plugin-svelte": "7.1.2",
     "@tailwindcss/vite": "4.3.0",
-    "daisyui": "5.5.19",
+    "daisyui": "5.5.20",
     "eslint": "10.4.0",
     "eslint-plugin-svelte": "3.17.1",
     "markdownlint": "0.40.0",
     "markdownlint-cli2": "0.22.1",
     "prettier": "3.8.3",
-    "prettier-plugin-svelte": "3.5.2",
+    "prettier-plugin-svelte": "4.0.1",
     "prettier-plugin-tailwindcss": "0.8.0",
     "tailwindcss": "4.3.0",
     "typescript": "6.0.3",
-    "typescript-eslint": "8.59.3",
-    "vite": "8.0.13",
-    "vitest": "4.1.6"
+    "typescript-eslint": "8.59.4",
+    "vite": "8.0.14",
+    "vitest": "4.1.7"
   },
   "dependencies": {
     "@tabler/icons-svelte": "3.44.0",
-    "svelte": "5.55.7"
+    "svelte": "5.55.9"
   }
 }
