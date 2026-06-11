@@ -1,4 +1,5 @@
 import { mount } from "svelte";
+
 import Margherita from "./view/Margherita.svelte";
 
 const element = document.getElementById("app");

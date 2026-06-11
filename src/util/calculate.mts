@@ -1,9 +1,6 @@
 import { UserEnteredNumber } from "../@types/UserEnteredNumber.mts";
 
-export function calculate(
-  price: UserEnteredNumber,
-  size: UserEnteredNumber,
-): UserEnteredNumber {
+export function calculate(price: UserEnteredNumber, size: UserEnteredNumber): UserEnteredNumber {
   if (price === "" || size === "") {
     return "";
   }

@@ -1,4 +1,5 @@
 import { test, expect } from "vitest";
+
 import { calculate } from "./calculate.mts";
 
 test("Happy Path", () => {

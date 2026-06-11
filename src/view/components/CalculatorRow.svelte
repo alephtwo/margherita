@@ -5,9 +5,10 @@
     IconCalculator,
     IconRowRemove,
   } from "@tabler/icons-svelte";
-  import { formatCurrency } from "../../util/currency.mts";
+
   import { type RowDetails } from "../../@types/RowDetails.mts";
   import { type UserEnteredNumber } from "../../@types/UserEnteredNumber.mts";
+  import { formatCurrency } from "../../util/currency.mts";
 
   interface CalculatorRowProps {
     row: RowDetails;
@@ -73,17 +74,11 @@
     <input
       type="text"
       readOnly
-      value={props.costEfficiency === ""
-        ? "—"
-        : formatCurrency(props.costEfficiency)}
+      value={props.costEfficiency === "" ? "—" : formatCurrency(props.costEfficiency)}
     />
     <span>/in²</span>
   </label>
-  <button
-    class="btn btn-error"
-    disabled={props.disableDelete}
-    onclick={props.onDelete}
-  >
+  <button class="btn btn-error" disabled={props.disableDelete} onclick={props.onDelete}>
     <IconRowRemove />
   </button>
 </div>
