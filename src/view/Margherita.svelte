@@ -57,7 +57,7 @@
                 />
               {/each}
               <div>
-                <button class="btn w-full btn-success" onclick={() => rows.push(newRow())}>
+                <button class="btn btn-success w-full" onclick={() => rows.push(newRow())}>
                   <IconRowInsertBottom /> Add Row
                 </button>
               </div>
