@@ -25,9 +25,9 @@
   const MEDALS = { 1: "🥇", 2: "🥈", 3: "🥉" } as const;
 
   function sanitizeInput(input: string): UserEnteredNumber {
-    const onlyDigits = input.replace(/[^\d]/g, "").substring(0, 6);
-    const attempt = parseInt(onlyDigits);
-    if (isNaN(attempt)) {
+    const onlyDigits = input.replaceAll(/[^\d]/g, "").slice(0, 6);
+    const attempt = Number.parseInt(onlyDigits);
+    if (Number.isNaN(attempt)) {
       return "";
     }
     return attempt;
