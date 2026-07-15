@@ -1,16 +1,14 @@
 {
   "include": ["src", "vite.config.mts"],
   "compilerOptions": {
+    "lib": ["dom", "esnext"],
     "types": ["vite/client"],
-    "lib": ["dom", "es2023"],
-    "target": "es2022",
-    "sourceMap": true,
-    "skipLibCheck": true,
-    "noEmit": true,
-    "module": "es2022",
+
+    // Build
+    "allowImportingTsExtensions": true,
     "moduleResolution": "bundler",
+    "noEmit": true,
     "resolveJsonModule": true,
-    "strict": true,
-    "allowImportingTsExtensions": true
+    "skipLibCheck": true
   }
 }
