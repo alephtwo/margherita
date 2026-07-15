@@ -6,6 +6,7 @@
 
     // Build
     "allowImportingTsExtensions": true,
+    "module": "esnext",
     "moduleResolution": "bundler",
     "noEmit": true,
     "resolveJsonModule": true,

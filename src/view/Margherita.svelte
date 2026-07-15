@@ -19,9 +19,11 @@
   let medals: Map<string, 1 | 2 | 3> = $derived.by(() => {
     const sorted = efficiencies
       .filter(([, v]) => v !== "")
-      .sort(([, a], [, b]) => (a as number) - (b as number));
+      .toSorted(([, a], [, b]) => (a as number) - (b as number));
     const map = new SvelteMap<string, 1 | 2 | 3>();
-    sorted.slice(0, 3).forEach(([id], i) => map.set(id, (i + 1) as 1 | 2 | 3));
+    for (const [i, eff] of sorted.slice(0, 3).entries()) {
+      map.set(eff[0], (i + 1) as 1 | 2 | 3);
+    }
     return map;
   });
 
