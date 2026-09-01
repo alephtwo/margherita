@@ -1,17 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 
-@plugin "daisyui/index.js" {
-  themes: light --default;
-}
-@plugin "daisyui/theme/index.js" {
-  name: "light";
-  default: true;
-
-  --color-success: #5cb85c;
-  --color-error: #d85454;
-}
-
 @theme {
   --font-sans: "Robot", sans-serif;
   --font-lobster: "Lobster", sans-serif;
@@ -20,5 +9,9 @@
 @layer base {
   * {
     @apply font-sans;
+  }
+
+  .input {
+    @apply rounded-xl;
   }
 }

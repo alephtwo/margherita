@@ -1,14 +1,11 @@
 <script lang="ts">
-  import {
-    IconCurrencyDollar,
-    IconRulerMeasure2,
-    IconCalculator,
-    IconRowRemove,
-  } from "@tabler/icons-svelte";
+  import { IconCalculator, IconCurrencyDollar, IconRowRemove } from "@tabler/icons-svelte";
 
   import { type RowDetails } from "../../@types/RowDetails.mts";
   import { type UserEnteredNumber } from "../../@types/UserEnteredNumber.mts";
   import { formatCurrency } from "../../util/currency.mts";
+  import Button from "./Button.svelte";
+  import TextInput from "./TextInput.svelte";
 
   interface CalculatorRowProps {
     row: RowDetails;
@@ -43,42 +40,44 @@
   }
 </script>
 
-<div class="flex w-full gap-2">
-  <label class="input flex-1 bg-slate-50/75">
-    <IconCurrencyDollar />
-    <input
-      type="text"
-      inputmode="decimal"
-      autoComplete="off"
-      oninput={(e) => handleInput(e, props.setPrice)}
-      value={props.row.price}
-    />
-  </label>
-  <label class="input flex-1 bg-slate-50/75">
-    <IconRulerMeasure2 />
-    <input
-      type="text"
-      inputmode="decimal"
-      autoComplete="off"
-      oninput={(e) => handleInput(e, props.setSize)}
-      value={props.row.size}
-    />
-    <span>in</span>
-  </label>
-  <label class="input flex-1 bg-slate-50/75">
-    {#if props.medal !== undefined}
-      <span>{MEDALS[props.medal]}</span>
-    {:else}
-      <IconCalculator />
-    {/if}
-    <input
-      type="text"
-      readOnly
-      value={props.costEfficiency === "" ? "—" : formatCurrency(props.costEfficiency)}
-    />
-    <span>/in²</span>
-  </label>
-  <button class="btn btn-error" disabled={props.disableDelete} onclick={props.onDelete}>
+<div class="flex gap-2">
+  <TextInput
+    class="shrink"
+    inputmode="decimal"
+    oninput={(e) => handleInput(e, props.setPrice)}
+    value={props.row.price.toString()}
+  >
+    {#snippet prefix()}
+      <IconCurrencyDollar />
+    {/snippet}
+  </TextInput>
+  <TextInput
+    class="shrink"
+    inputmode="decimal"
+    oninput={(e) => handleInput(e, props.setSize)}
+    value={props.row.size.toString()}
+  >
+    {#snippet suffix()}
+      <span>in</span>
+    {/snippet}
+  </TextInput>
+  <TextInput
+    class="shrink"
+    readonly
+    value={props.costEfficiency === "" ? "—" : formatCurrency(props.costEfficiency)}
+  >
+    {#snippet prefix()}
+      {#if props.medal !== undefined}
+        <span>{MEDALS[props.medal]}</span>
+      {:else}
+        <IconCalculator />
+      {/if}
+    {/snippet}
+    {#snippet suffix()}
+      <span>/in²</span>
+    {/snippet}
+  </TextInput>
+  <Button color="red" class="grow-0" disabled={props.disableDelete} onclick={props.onDelete}>
     <IconRowRemove />
-  </button>
+  </Button>
 </div>

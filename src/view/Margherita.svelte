@@ -6,6 +6,7 @@
   import { type RowDetails, create as newRow } from "../@types/RowDetails.mts";
   import { type UserEnteredNumber } from "../@types/UserEnteredNumber.mts";
   import { calculate } from "../util/calculate.mts";
+  import Button from "./components/Button.svelte";
   import CalculatorRow from "./components/CalculatorRow.svelte";
   import Paper from "./components/Paper.svelte";
 
@@ -59,9 +60,9 @@
                 />
               {/each}
               <div>
-                <button class="btn btn-success w-full" onclick={() => rows.push(newRow())}>
+                <Button fullwidth onclick={() => rows.push(newRow())}>
                   <IconRowInsertBottom /> Add Row
-                </button>
+                </Button>
               </div>
             </div>
             <div class="flex flex-col content-center items-center gap-2">
