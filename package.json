@@ -16,7 +16,7 @@
     "lint:md": "markdownlint-cli2 ."
   },
   "dependencies": {
-    "@tabler/icons-svelte": "3.48.0",
+    "@tabler/icons-svelte": "3.49.0",
     "svelte": "5.57.1"
   },
   "devDependencies": {
@@ -26,13 +26,13 @@
     "@sveltejs/vite-plugin-svelte": "7.3.1",
     "@tailwindcss/vite": "4.3.3",
     "markdownlint-cli2": "0.23.3",
-    "oxfmt": "0.71.0",
-    "oxlint": "1.86.0",
+    "oxfmt": "0.72.0",
+    "oxlint": "1.87.0",
     "oxlint-tailwindcss": "1.14.0",
     "oxlint-tsgolint": "7.0.2003",
     "tailwindcss": "4.3.3",
     "typescript": "7.0.2",
-    "vite": "8.3.1",
+    "vite": "8.3.2",
     "vitest": "5.0.3"
   }
 }
