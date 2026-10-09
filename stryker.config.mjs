@@ -6,4 +6,11 @@ export default {
   testRunner: "vitest",
   packageManager: "pnpm",
   plugins: ["@stryker-mutator/vitest-runner"],
+  mutate: [
+    "src/**/*.mts",
+    "src/**/*.tsx",
+    "!src/paraglide/**",
+    "!src/**/*.test.mts",
+    "!src/**/*.test.tsx",
+  ],
 };

@@ -1,15 +1,21 @@
 {
   "include": ["src", "vite.config.mts"],
   "compilerOptions": {
-    "lib": ["dom", "esnext"],
+    "target": "esnext",
+    "lib": ["esnext", "dom"],
     "types": ["vite/client"],
+
+    // Module Resolution
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "paths": {
+      "@i18n/messages": ["./src/paraglide/messages"]
+    },
 
     // Build
     "allowImportingTsExtensions": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
     "noEmit": true,
-    "resolveJsonModule": true,
     "skipLibCheck": true
   }
 }
