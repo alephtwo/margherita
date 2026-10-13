@@ -22,6 +22,7 @@ export function PizzaCard({ pizza }: PizzaCardProps): React.JSX.Element {
       <InputGroup className="border border-black bg-white/50">
         <InputGroupInput
           type="text"
+          className="font-mono"
           inputMode="numeric"
           value={pizza.size}
           onChange={(e) => dispatch({ action: "set-size", id: pizza.id, value: e.target.value })}
@@ -33,6 +34,7 @@ export function PizzaCard({ pizza }: PizzaCardProps): React.JSX.Element {
       <InputGroup className="border border-black bg-white/50">
         <InputGroupInput
           type="text"
+          className="font-mono"
           inputMode="numeric"
           value={pizza.price}
           onChange={(e) => dispatch({ action: "set-price", id: pizza.id, value: e.target.value })}
@@ -45,7 +47,11 @@ export function PizzaCard({ pizza }: PizzaCardProps): React.JSX.Element {
         <InputGroupAddon>
           <IconCalculator />
         </InputGroupAddon>
-        <InputGroupInput type="text" value={pizza.calculateEfficiency()?.toFixed(4)} />
+        <InputGroupInput
+          type="text"
+          className="font-mono"
+          value={pizza.calculateEfficiency()?.toFixed(4)}
+        />
       </InputGroup>
       <Button onClick={() => dispatch({ action: "delete-pizza", id: pizza.id })} variant="default">
         <IconTrash />
