@@ -49,9 +49,11 @@ export function PizzaCard({ pizza }: PizzaCardProps): React.JSX.Element {
         </InputGroupAddon>
         <InputGroupInput
           type="text"
-          className="font-mono"
           value={pizza.calculateEfficiency()?.toFixed(4)}
+          disabled
+          className="font-mono"
         />
+        <InputGroupAddon align="inline-end">in²/$</InputGroupAddon>
       </InputGroup>
       <Button onClick={() => dispatch({ action: "delete-pizza", id: pizza.id })} variant="default">
         <IconTrash />
