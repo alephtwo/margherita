@@ -1,4 +1,4 @@
-import { IconCalculator, IconCurrencyDollar, IconRuler2, IconTrash } from "@tabler/icons-react";
+import { IconTrash } from "@tabler/icons-react";
 import { useContext } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -23,26 +23,20 @@ export function PizzaCard({ pizza, ranking }: PizzaCardProps): React.JSX.Element
       <InputGroup className="border border-black bg-white/50">
         <InputGroupInput
           type="text"
-          className="font-mono"
+          className="text-center font-mono"
           inputMode="numeric"
           value={pizza.size}
           onChange={(e) => dispatch({ action: "set-size", id: pizza.id, value: e.target.value })}
         />
-        <InputGroupAddon>
-          <IconRuler2 />
-        </InputGroupAddon>
       </InputGroup>
       <InputGroup className="border border-black bg-white/50">
         <InputGroupInput
           type="text"
-          className="font-mono"
+          className="text-center font-mono"
           inputMode="numeric"
           value={pizza.price}
           onChange={(e) => dispatch({ action: "set-price", id: pizza.id, value: e.target.value })}
         />
-        <InputGroupAddon>
-          <IconCurrencyDollar />
-        </InputGroupAddon>
       </InputGroup>
       <InputGroup className="border border-black bg-white/50">
         <InputGroupAddon>
@@ -52,9 +46,8 @@ export function PizzaCard({ pizza, ranking }: PizzaCardProps): React.JSX.Element
           type="text"
           value={pizza.calculateEfficiency()?.toFixed(4)}
           disabled
-          className="font-mono"
+          className="text-center font-mono"
         />
-        <InputGroupAddon align="inline-end">in²/$</InputGroupAddon>
       </InputGroup>
       <Button
         onClick={() => dispatch({ action: "delete-pizza", id: pizza.id })}
@@ -78,8 +71,6 @@ function RankingIcon(props: { rank?: number }): React.JSX.Element {
     case 3: {
       return <span>🥉</span>;
     }
-    default: {
-      return <IconCalculator />;
-    }
   }
+  return <></>;
 }

@@ -37,7 +37,12 @@ export function Application(): React.JSX.Element {
         <div className="w-full rounded-md bg-white/50 p-2 md:w-3/4 lg:w-1/2">
           <div className="my-2 flex flex-col gap-2">
             <DispatchContext.Provider value={dispatch}>
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-1">
+                <div className="grid grid-cols-[1fr_1fr_1fr_4rem] gap-2">
+                  <span className="text-center text-sm font-bold">Diameter</span>
+                  <span className="text-center text-sm font-bold">Price</span>
+                  <span className="text-center text-sm font-bold">Area per Price</span>
+                </div>
                 {state.pizzas.map((pizza) => (
                   <PizzaCard
                     key={pizza.id}
