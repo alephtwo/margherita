@@ -30,7 +30,10 @@ export function Application(): React.JSX.Element {
                 ))}
               </div>
             </DispatchContext.Provider>
-            <Button onClick={() => dispatch({ action: "add-pizza" })}>
+            <Button
+              onClick={() => dispatch({ action: "add-pizza" })}
+              className="border border-black bg-sky-800 hover:bg-sky-700"
+            >
               <IconPlus /> {m["add-new-pizza"]()}
             </Button>
           </div>

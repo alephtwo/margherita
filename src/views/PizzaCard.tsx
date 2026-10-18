@@ -55,7 +55,11 @@ export function PizzaCard({ pizza }: PizzaCardProps): React.JSX.Element {
         />
         <InputGroupAddon align="inline-end">in²/$</InputGroupAddon>
       </InputGroup>
-      <Button onClick={() => dispatch({ action: "delete-pizza", id: pizza.id })} variant="default">
+      <Button
+        onClick={() => dispatch({ action: "delete-pizza", id: pizza.id })}
+        variant="default"
+        className="border border-black bg-red-800 hover:bg-red-700"
+      >
         <IconTrash />
       </Button>
     </div>
