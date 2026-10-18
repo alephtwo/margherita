@@ -9,9 +9,10 @@ import { Pizza } from "../types/Pizza.mts";
 
 interface PizzaCardProps {
   pizza: Pizza;
+  ranking?: number;
 }
 
-export function PizzaCard({ pizza }: PizzaCardProps): React.JSX.Element {
+export function PizzaCard({ pizza, ranking }: PizzaCardProps): React.JSX.Element {
   const dispatch = useContext(DispatchContext);
   if (dispatch === null) {
     return <></>;
@@ -45,7 +46,7 @@ export function PizzaCard({ pizza }: PizzaCardProps): React.JSX.Element {
       </InputGroup>
       <InputGroup className="border border-black bg-white/50">
         <InputGroupAddon>
-          <IconCalculator />
+          <RankingIcon rank={ranking} />
         </InputGroupAddon>
         <InputGroupInput
           type="text"
@@ -64,4 +65,21 @@ export function PizzaCard({ pizza }: PizzaCardProps): React.JSX.Element {
       </Button>
     </div>
   );
+}
+
+function RankingIcon(props: { rank: number }): React.JSX.Element {
+  switch (props.rank) {
+    case 1: {
+      return <span>🥇</span>;
+    }
+    case 2: {
+      return <span>🥈</span>;
+    }
+    case 3: {
+      return <span>🥉</span>;
+    }
+    default: {
+      return <IconCalculator />;
+    }
+  }
 }

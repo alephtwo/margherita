@@ -14,6 +14,19 @@ import { PizzaCard } from "./PizzaCard";
 export function Application(): React.JSX.Element {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  // determine a global list of rankings for pizza efficiencies
+  // we're calculating the efficiency on every update but it should be fine...
+  const rankings = new Map(
+    [
+      // Unique efficiencies across all pizzas
+      ...new Set(state.pizzas.map((p) => p.calculateEfficiency()).filter((e) => e !== undefined)),
+    ]
+      // descending sort
+      .toSorted((a, b) => b - a)
+      // get ranking for that efficiency
+      .map((e, i) => [e, i + 1]),
+  );
+
   return (
     <div className="flex min-h-screen bg-[url(/pizza.webp)] bg-cover bg-fixed bg-no-repeat">
       <div className="fixed inset-0 bg-black/50 backdrop-blur-xs"></div>
@@ -26,7 +39,11 @@ export function Application(): React.JSX.Element {
             <DispatchContext.Provider value={dispatch}>
               <div className="flex flex-col gap-3">
                 {state.pizzas.map((pizza) => (
-                  <PizzaCard key={pizza.id} pizza={pizza} />
+                  <PizzaCard
+                    key={pizza.id}
+                    pizza={pizza}
+                    ranking={rankings.get(pizza.calculateEfficiency())}
+                  />
                 ))}
               </div>
             </DispatchContext.Provider>
