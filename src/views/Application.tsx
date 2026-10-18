@@ -42,7 +42,7 @@ export function Application(): React.JSX.Element {
                   <PizzaCard
                     key={pizza.id}
                     pizza={pizza}
-                    ranking={rankings.get(pizza.calculateEfficiency())}
+                    ranking={rankings.get(pizza.calculateEfficiency() ?? -1)}
                   />
                 ))}
               </div>

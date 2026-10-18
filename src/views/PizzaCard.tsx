@@ -67,7 +67,7 @@ export function PizzaCard({ pizza, ranking }: PizzaCardProps): React.JSX.Element
   );
 }
 
-function RankingIcon(props: { rank: number }): React.JSX.Element {
+function RankingIcon(props: { rank?: number }): React.JSX.Element {
   switch (props.rank) {
     case 1: {
       return <span>🥇</span>;
