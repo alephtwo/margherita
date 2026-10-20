@@ -31,8 +31,10 @@ export function Application(): React.JSX.Element {
     <div className="flex min-h-screen bg-[url(/pizza.webp)] bg-cover bg-fixed bg-no-repeat">
       <div className="fixed inset-0 bg-black/50 backdrop-blur-xs"></div>
       <div className="z-10 container mx-auto flex flex-col items-center gap-2">
-        <div className="mb-5 text-center">
-          <span className="font-lobster text-7xl text-white text-shadow-lg/80">margherita</span>
+        <div className="my-2 text-center">
+          <span className="font-pizza-parlor text-7xl text-white text-shadow-lg/80">
+            margherita
+          </span>
         </div>
         <div className="w-full rounded-md bg-white/50 p-2 md:w-3/4 lg:w-1/2">
           <div className="my-2 flex flex-col gap-2">
@@ -64,7 +66,7 @@ export function Application(): React.JSX.Element {
               <source src={WillametteMall} type="audio/mp3" />
               <track kind="captions" src={SilentVTT} srcLang="en" label="No dialogue" />
             </audio>
-            <span className="caption-bottom text-xs">
+            <span className="block caption-bottom font-receipt text-xs uppercase">
               Willamette Mall Music is &copy; Capcom 2006
             </span>
           </div>
