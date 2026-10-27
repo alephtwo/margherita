@@ -8,12 +8,6 @@
   "options": {
     "typeAware": true
   },
-  "globals": {
-    // Svelte
-    "$derived": "readonly",
-    "$props": "readonly",
-    "$state": "readonly"
-  },
   "ignorePatterns": [
     // ignore shadcn since we are pulling from a library
     "src/components/ui/*.tsx"
