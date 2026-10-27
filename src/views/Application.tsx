@@ -66,7 +66,7 @@ export function Application(): React.JSX.Element {
               <source src={WillametteMall} type="audio/mp3" />
               <track kind="captions" src={SilentVTT} srcLang="en" label="No dialogue" />
             </audio>
-            <span className="block caption-bottom font-receipt text-xs uppercase">
+            <span className="font-receipt block caption-bottom text-xs uppercase">
               Willamette Mall Music is &copy; Capcom 2006
             </span>
           </div>
