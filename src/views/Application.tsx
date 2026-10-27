@@ -36,21 +36,14 @@ export function Application(): React.JSX.Element {
             margherita
           </span>
         </div>
-        <div className="relative my-5 w-full rounded-none border-4 border-stone-900 bg-stone-50/80 p-4 shadow-[6px_6px_0px_var(--color-retro-shadow)] backdrop-blur-md before:absolute before:inset-x-0 before:-top-3 before:h-3 before:bg-[radial-gradient(circle,transparent_4px,var(--color-receipt-header)_4px)] before:bg-size-[12px_12px] md:w-3/4 lg:w-1/2">
-          <div className="my-2 flex flex-col gap-3">
+        <div className="w-full rounded-md bg-white/50 p-2 md:w-3/4 lg:w-1/2">
+          <div className="my-2 flex flex-col gap-2">
             <DispatchContext.Provider value={dispatch}>
-              <div className="flex flex-col gap-2">
-                <div className="mb-1 grid grid-cols-[1fr_1fr_1fr_4rem] gap-2 border-b-2 border-stone-800 pb-1.5">
-                  <span className="font-receipt text-center text-xs font-bold tracking-wider text-stone-800 uppercase">
-                    Diameter
-                  </span>
-                  <span className="font-receipt text-center text-xs font-bold tracking-wider text-stone-800 uppercase">
-                    Price
-                  </span>
-                  <span className="font-receipt text-center text-xs font-bold tracking-wider text-stone-800 uppercase">
-                    Area / $
-                  </span>
-                  <span className="font-receipt text-center text-xs font-bold tracking-wider text-stone-800 uppercase"></span>
+              <div className="flex flex-col gap-1">
+                <div className="grid grid-cols-[1fr_1fr_1fr_4rem] gap-2">
+                  <span className="text-center text-sm font-bold">Diameter</span>
+                  <span className="text-center text-sm font-bold">Price</span>
+                  <span className="text-center text-sm font-bold">Area per Price</span>
                 </div>
                 {state.pizzas.map((pizza) => (
                   <PizzaCard
@@ -63,22 +56,17 @@ export function Application(): React.JSX.Element {
             </DispatchContext.Provider>
             <Button
               onClick={() => dispatch({ action: "add-pizza" })}
-              className="font-receipt mt-2 rounded-none border-2 border-stone-900 bg-amber-500 py-5 font-bold tracking-wide text-stone-950 shadow-[3px_3px_0px_var(--color-retro-shadow)] transition-none hover:bg-amber-400 active:translate-y-0.5"
+              className="border border-black bg-sky-800 hover:bg-sky-700"
             >
-              <IconPlus className="mr-1.5 size-4 stroke-3" /> {m["add-new-pizza"]()}
+              <IconPlus /> {m["add-new-pizza"]()}
             </Button>
           </div>
-          <div className="mt-4 flex flex-col content-center items-center gap-2 border-t-2 border-dashed border-stone-300 pt-3">
-            <audio
-              controls
-              autoPlay
-              loop
-              className="h-8 w-full max-w-xs accent-amber-600 opacity-90 contrast-200 grayscale transition-opacity hover:opacity-100"
-            >
+          <div className="flex flex-col content-center items-center gap-2">
+            <audio controls autoPlay loop>
               <source src={WillametteMall} type="audio/mp3" />
               <track kind="captions" src={SilentVTT} srcLang="en" label="No dialogue" />
             </audio>
-            <span className="font-receipt block caption-bottom text-[10px] tracking-widest text-stone-500 uppercase">
+            <span className="block caption-bottom font-receipt text-xs uppercase">
               Willamette Mall Music is &copy; Capcom 2006
             </span>
           </div>

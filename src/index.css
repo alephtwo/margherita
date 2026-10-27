@@ -7,8 +7,6 @@
   --font-sans: "Plus Jakarta Sans", sans-serif;
   --font-receipt: "Courier Prime", monospace;
   --font-pizza-parlor: "Caprasimo", serif;
-  --color-retro-shadow: #1c1917;
-  --color-receipt-header: #ffafaf;
 }
 
 @theme inline {

@@ -19,30 +19,26 @@ export function PizzaCard({ pizza, ranking }: PizzaCardProps): React.JSX.Element
   }
 
   return (
-    <div className="grid grid-cols-[1fr_1fr_1fr_4rem] items-center gap-2">
-      <InputGroup className="rounded-none border-2 border-stone-800 bg-stone-50 shadow-[2px_2px_0px_var(--color-retro-shadow)]">
+    <div className="grid grid-cols-[1fr_1fr_1fr_4rem] gap-2">
+      <InputGroup className="border border-black bg-white/50">
         <InputGroupInput
           type="text"
-          className="font-receipt bg-transparent text-center tracking-wider text-stone-900"
+          className="text-center font-receipt"
           inputMode="numeric"
           value={pizza.size}
           onChange={(e) => dispatch({ action: "set-size", id: pizza.id, value: e.target.value })}
-          placeholder="Size"
         />
       </InputGroup>
-
-      <InputGroup className="rounded-none border-2 border-stone-800 bg-stone-50 shadow-[2px_2px_0px_var(--color-retro-shadow)]">
+      <InputGroup className="border border-black bg-white/50">
         <InputGroupInput
           type="text"
-          className="font-receipt bg-transparent text-center tracking-wider text-stone-900"
+          className="text-center font-receipt"
           inputMode="numeric"
           value={pizza.price}
           onChange={(e) => dispatch({ action: "set-price", id: pizza.id, value: e.target.value })}
-          placeholder="Price"
         />
       </InputGroup>
-
-      <InputGroup className="rounded-none border-2 border-stone-800 bg-stone-50 shadow-[2px_2px_0px_var(--color-retro-shadow)]">
+      <InputGroup className="border border-black bg-white/50">
         <InputGroupAddon>
           <RankingIcon rank={ranking} />
         </InputGroupAddon>
@@ -50,14 +46,13 @@ export function PizzaCard({ pizza, ranking }: PizzaCardProps): React.JSX.Element
           type="text"
           value={pizza.calculateEfficiency()?.toFixed(4)}
           disabled
-          className="font-receipt bg-transparent text-center tracking-widest text-stone-900 disabled:opacity-100"
+          className="text-center font-receipt"
         />
       </InputGroup>
-
       <Button
         onClick={() => dispatch({ action: "delete-pizza", id: pizza.id })}
         variant="default"
-        className="font-receipt rounded-none border-2 border-stone-900 bg-red-600 px-3 text-stone-50 shadow-[3px_3px_0px_var(--color-retro-shadow)] transition-none hover:bg-red-500 active:translate-y-0.5"
+        className="border border-black bg-red-800 hover:bg-red-700"
       >
         <IconTrash />
       </Button>
