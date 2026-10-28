@@ -12,13 +12,13 @@ const paths = {
 export default defineConfig({
   base: "/margherita",
   plugins: [
+    react(),
+    tailwindcss(),
     paraglide({
       project: path.join(import.meta.dirname, "project.inlang"),
       outdir: path.join(paths.src, "paraglide"),
       emitTsDeclarations: true,
     }),
-    react(),
-    tailwindcss(),
   ],
   resolve: {
     alias: {
